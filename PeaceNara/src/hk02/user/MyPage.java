@@ -2,13 +2,10 @@ package hk02.user;
 
 import java.util.Scanner;
 
-import util.InputCheck;
-import util.PowerFunction;
 
 public class MyPage {
 	// 로그인 한 유저 변수를
 	// public static User loginUser라고 가정하고 작성함
-	
 	
 	// my page 메뉴
 	// 1. 내 정보 확인
@@ -28,6 +25,8 @@ public class MyPage {
 			} else if(input12() == 2){
 				updatePw(); // 비밀번호 변경
 			} else {
+				System.out.println("My Page를 벗어납니다.");
+				System.out.println("---------------------------------------------------------------\n");
 				break; // 마이페이지 벗어나기
 			}
 		}
