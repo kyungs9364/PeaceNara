@@ -108,6 +108,7 @@ public class Market {
 		System.out.println("판매자 명을 입력해주세요.");
 		input = scan.nextLine();
 		goodsList.get(goodsList.size() - 1).setSeller(input);
+//		goodsList.get(goodsList.size() - 1).setSeller(user.getName 예정);
 
 		goodsListPrint();
 
