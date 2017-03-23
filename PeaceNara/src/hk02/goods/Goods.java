@@ -40,7 +40,7 @@ public class Goods {
 		this.price = price;
 		this.seller = seller;
 		this.time = time; 
-		this.time2 = "00:00:00"; // 더미데이터엔 time2 지 않을 생각
+		this.time2 = "00:00:00"; // 더미데이터의 time2는 따로 기록하지 않을 생각
 		this.stock = true;
 	}
 
@@ -116,9 +116,12 @@ public class Goods {
 		this.stock = stock;
 	}
 
+	
 	@Override // 미완성
 	public String toString() {
-		return number + "\t제목: " + title + "\t\t가격: " + price + "\t판매자: " + seller + "\t게시일 " + time;
-	}
+		System.out.printf("%3d  제목: %-9s\t가격: %d\t판매자: %s\t게시일: %s",number,title,price,seller,time);
+		return "";
+		// number + "\t제목: " + title + "\t\t가격: " + price + "\t판매자: " + seller + "\t게시일 " + time;
+	}	
 
 }
