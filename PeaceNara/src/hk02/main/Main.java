@@ -6,7 +6,7 @@ public class Main {
 		// TODO Auto-generated method stub
 		System.out.println("first commit");
 		System.out.println("Success. !!");
-		System.out.println("haeryeong");
+		System.out.println("haeryeong 2");
 	}
 
 }
