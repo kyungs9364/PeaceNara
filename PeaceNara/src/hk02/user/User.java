@@ -9,5 +9,4 @@ public class User {
 	private int balance;
 //	private ArrayList<Goods> uploadedGoods; 
 	
-	
 }
