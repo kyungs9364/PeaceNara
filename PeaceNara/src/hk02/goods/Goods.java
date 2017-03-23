@@ -115,6 +115,10 @@ public class Goods {
 	public void setStock(boolean stock) {
 		this.stock = stock;
 	}
+	
+	public String getTime2() {
+		return time2;
+	}
 
 	
 	@Override // 미완성
