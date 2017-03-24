@@ -116,6 +116,14 @@ public class Goods {
 		this.stock = stock;
 	}
 	
+	public String getStock(){
+		if(stock){
+			return "판매중";
+		}else{
+			return "판매완료";
+		}
+	}
+	
 	public String getTime2() {
 		return time2;
 	}
@@ -125,11 +133,7 @@ public class Goods {
 	public String toString() {		
 //		System.out.println(" NO   제목\t 가격\t 판매자\t등록일\t상태");  출력 상단 바
 		System.out.printf("%3d  %-8s\t %d\t %s\t %s\t",number,title,price,seller,time);
-		if(stock){
-			System.out.print("판매중");
-		}else if(stock){
-			System.out.print("판매완료");
-		}				
+		getStock();
 		return "";
 	}	
 
