@@ -20,9 +20,9 @@
 //			System.out.println("2. 비밀번호 변경");
 //			System.out.println("3. 종료");
 //	
-//			if(input12() == 1){
+//			if(input123() == 1){
 //				printUserInfo(); // 내 정보 출력
-//			} else if(input12() == 2){
+//			} else if(input123() == 2){
 //				updatePw(); // 비밀번호 변경
 //			} else {
 //				System.out.println("My Page를 벗어납니다.");
@@ -32,14 +32,14 @@
 //		}
 //	}
 //	
-//	// Scanner로 String으로 입력받아서 int반환 (유효성검사: 1, 2)
-//	private int input12(){
+//	// Scanner로 String으로 입력받아서 int반환 (유효성검사: 1, 2, 3)
+//	private int input123(){
 //		Scanner scan = new Scanner(System.in);
 //		String tmp = null;
 //		int result = 0;
 //		while(true) {
 //			tmp = scan.next().trim();
-//			if(tmp.matches("[12]")){
+//			if(tmp.matches("[123]")){
 //				result = Integer.parseInt(tmp);
 //				break;
 //			}else{
@@ -67,7 +67,7 @@
 //		String pw2 = "";
 //		
 //		while(true) {
-//			System.out.println("새로운 비밀번호를 입력해주세요.");
+//			System.out.println("\n새로운 비밀번호를 입력해주세요.");
 //			pw1 = scan.nextLine().trim();
 //			
 //			System.out.println("다시 한 번 입력해주세요.");
@@ -79,7 +79,7 @@
 //				return;
 //			}else{
 //				System.out.println("입력한 두 비밀번호가 다릅니다.");
-//				System.out.println("처음부터 다시 입력합니다.\n");
+//				System.out.println("처음부터 다시 입력합니다.");
 //				continue;
 //			}
 //		}

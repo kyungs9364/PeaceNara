@@ -115,13 +115,26 @@ public class Goods {
 	public void setStock(boolean stock) {
 		this.stock = stock;
 	}
+	
+	public String getStock(){
+		if(stock){
+			return "판매중";
+		}else{
+			return "판매완료";
+		}
+	}
+	
+	public String getTime2() {
+		return time2;
+	}
 
 	
 	@Override // 미완성
-	public String toString() {
-		System.out.printf("%3d  제목: %-9s\t가격: %d\t판매자: %s\t게시일: %s",number,title,price,seller,time);
+	public String toString() {		
+//		System.out.println(" NO   제목\t 가격\t 판매자\t등록일\t상태");  출력 상단 바
+		System.out.printf("%3d  %-7s\t %d\t %s\t %s\t",number,title,price,seller,time);
+		System.out.print(getStock());
 		return "";
-		// number + "\t제목: " + title + "\t\t가격: " + price + "\t판매자: " + seller + "\t게시일 " + time;
 	}	
 
 }
