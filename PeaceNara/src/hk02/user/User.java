@@ -44,7 +44,6 @@ public class User {
 	}
 
 	public void setBuyGoodsList(ArrayList<Goods> buyGoodsList, int buyNumber) {
-		buyGoodsList.add(new Goods());
 		this.buyGoodsList.add(buyGoodsList.get(buyNumber));
 	}
 	public ArrayList<Goods> getUploadedGoodsList() {
