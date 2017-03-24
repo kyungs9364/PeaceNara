@@ -9,7 +9,7 @@ public class Goods {
 	private int number = 0; // 게시물 번호
 
 	private String model = ""; // 판매 물품 모델명
-	private String company = ""; // 판매 물품 제작사명
+	private String company = ""; // 판매 물품 제조사명
 	private int price = 0; // 판매 물품 가격
 
 	private String seller = ""; // 판매자 (id or 이름)
