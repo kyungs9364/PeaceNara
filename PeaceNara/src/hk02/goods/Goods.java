@@ -132,7 +132,7 @@ public class Goods {
 	@Override // 미완성
 	public String toString() {		
 //		System.out.println(" NO   제목\t 가격\t 판매자\t등록일\t상태");  출력 상단 바
-		System.out.printf("%3d  %-8s\t %d\t %s\t %s\t",number,title,price,seller,time);
+		System.out.printf("%3d  %-7s\t %d\t %s\t %s\t",number,title,price,seller,time);
 		System.out.print(getStock());
 		return "";
 	}	

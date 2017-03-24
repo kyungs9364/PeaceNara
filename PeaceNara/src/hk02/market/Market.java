@@ -58,8 +58,8 @@ public class Market {
 		System.out.println("--물품 목록-----------------------------------------------------------------");
 		System.out.println(" 번호  제품명     가격   판매자     날짜         상태");
 		System.out.println("============================================================================");
-		for (Goods goods : goodsList) {
-			System.out.println(goods);
+		for (int i = goodsList.size()-1; i >= 0; i--) {  // 역순으로 게시글을 보이게함.(최신글 순.)
+			System.out.println(goodsList.get(i));
 		}
 		System.out.println("----------------------------------------------------------------------------");
 	}
@@ -72,12 +72,8 @@ public class Market {
 		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
 												// 삭제시키기위함.
 
-		// goodsListPrint();
-
-		for (int i = 0; i < 2; i++) {
-			System.out.println("\n구매할 물품 번호를 입력해주세요.");
-
 			try {
+				System.out.println("- 구매하실 물품번호를 입력해주세요.");
 				int goodsNum = scan.nextInt();
 
 				if (goodsNum < goodsList.size() && goodsNum > 0
@@ -111,7 +107,6 @@ public class Market {
 				// TODO: handle exception
 				System.out.println(e);
 			}
-		}
 
 		System.out.println("\n내가 구매한 목록 -----------------------------------------------------------");
 		for (Goods goods : user.getBuyGoodsList()) {
@@ -130,7 +125,7 @@ public class Market {
 
 		goodsList.add(new Goods());
 
-		System.out.println("제목을 입력해주세요.");
+		System.out.println("* 제목을 입력해주세요.");
 		String input = scan.nextLine();
 		goodsList.get(goodsList.size() - 1).setTitle(input);
 
@@ -144,11 +139,11 @@ public class Market {
 
 		goodsList.get(goodsList.size() - 1).setNumber(goodsList.size());
 
-		System.out.println("가격을 입력해주세요.");
+		System.out.println("* 가격을 입력해주세요.");
 		input = scan.nextLine();
 		goodsList.get(goodsList.size() - 1).setPrice(Integer.parseInt(input));
 
-		System.out.println("판매자 명을 입력해주세요.");
+		System.out.println("* 판매자 명을 입력해주세요.");
 		input = scan.nextLine();
 		goodsList.get(goodsList.size() - 1).setSeller(input);
 		// goodsList.get(goodsList.size() - 1).setSeller(user.getName 예정);
