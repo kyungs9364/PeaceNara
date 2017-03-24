@@ -1,12 +1,13 @@
 package hk02.main;
 
+import hk02.market.Market;
+
 public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		System.out.println("first commit");
-		System.out.println("Success. !!");
-		System.out.println("haeryeong 2 ");
+		Market market = new Market();
+		market.helloMarket();
 		
 	}
 
