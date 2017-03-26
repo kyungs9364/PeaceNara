@@ -77,9 +77,7 @@ public class User {
 		System.out.println(" 번호  제품명     가격   판매자     날짜         상태");
 		System.out.println("============================================================================");
 		for (int i = getSellGoodsList().size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글 순.)
-			if (getSellGoodsList().get(i).getStock().equals("판매중")) {
-				System.out.println(getSellGoodsList().get(i));
-			}
+			System.out.println(getSellGoodsList().get(i));
 		}
 		System.out.println("---------------------------------------------------------------------------------------------------------------------------\n");
 	}
@@ -90,9 +88,7 @@ public class User {
 		System.out.println(" 번호  제품명     가격   판매자     날짜         상태");
 		System.out.println("============================================================================");
 		for (int i = getBuyGoodsList().size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글 순.)
-			if (getBuyGoodsList().get(i).getStock().equals("판매완료")) {
-				System.out.println(getBuyGoodsList().get(i));
-			}
+			System.out.println(getBuyGoodsList().get(i));
 		}
 		System.out.println("---------------------------------------------------------------------------------------------------------------------------\n");
 	}
