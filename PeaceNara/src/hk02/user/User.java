@@ -58,8 +58,8 @@ public class User {
 	public void printUserInfo() {
 		System.out.println();
 		printInfo(); // 이름, 전화번호, 잔액 출력
-		printSellList(); // 판매중인 물품리스트 출력
-		printBuyList(); // 구매내역 출력
+		printList(sellGoodsList); // 판매중인 물품리스트 출력
+		printList(buyGoodsList); // 구매내역 출력
 	}
 	
 	// 이름, 전화번호, 잔액 출력
@@ -72,27 +72,12 @@ public class User {
 	}
 	
 	// Market클래스에서 가져왔음.
-	public void printSellList() {
+	public void printList(ArrayList<Goods> list) {
 		System.out.println("--판매중인 물품----------------------------------------------------------------------------------------------------------");
 		System.out.println(" 번호  제품명     가격   판매자     날짜         상태");
 		System.out.println("============================================================================");
-		for (int i = getSellGoodsList().size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글 순.)
-			if (getSellGoodsList().get(i).getStock().equals("판매중")) {
-				System.out.println(getSellGoodsList().get(i));
-			}
-		}
-		System.out.println("---------------------------------------------------------------------------------------------------------------------------\n");
-	}
-
-	// Market클래스에서 가져왔음.
-	public void printBuyList() {
-		System.out.println("--구매 내역---------------------------------------------------------------------------------------------------------------");
-		System.out.println(" 번호  제품명     가격   판매자     날짜         상태");
-		System.out.println("============================================================================");
-		for (int i = getBuyGoodsList().size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글 순.)
-			if (getBuyGoodsList().get(i).getStock().equals("판매완료")) {
-				System.out.println(getBuyGoodsList().get(i));
-			}
+		for (int i = list.size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글 순.)
+			System.out.println(list.get(i));
 		}
 		System.out.println("---------------------------------------------------------------------------------------------------------------------------\n");
 	}
