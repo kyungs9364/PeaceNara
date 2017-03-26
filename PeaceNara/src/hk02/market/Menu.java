@@ -3,16 +3,20 @@ package hk02.market;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import hk02.user.MyPage;
+import hk02.user.User;
+
 public class Menu {
+	MyPage page = new MyPage();
 	
-	public void marketMenu(Market market){
+	public void marketMenu(Market market, User user){
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t1.물품정보\t2.물품사기\t3.물품판매\t4.MyPage\t5.Logout");
 		System.out.println("------------------------------------------------------------------------");
-		marketMenuEvent(market);
+		marketMenuEvent(market, user);
 	}
 	
-	public void marketMenuEvent(Market market){
+	public void marketMenuEvent(Market market, User user){
 		Scanner scan = new Scanner(System.in);
 		while (true) {
 			System.out.println("\n>> 보고싶거나 하고싶은 번호를 입력해주세요.");
@@ -29,8 +33,8 @@ public class Menu {
 					market.sell();
 					break;
 				case 4:
-					// page.myPageMenu();
-					System.out.println("미구현");
+					page.myPage(user);
+					marketMenu(market, user);
 					break;
 				case 5:
 					// logout();

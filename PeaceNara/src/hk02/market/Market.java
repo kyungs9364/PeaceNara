@@ -11,6 +11,7 @@ public class Market {
 	private ArrayList<Goods> goodsList; // 총 상품리스트
 	// private MyPage myPage = new MyPage();
 	Menu menu = new Menu();
+	User user = new User();  // user의 더미 사용.
 
 	public Market() { // 마켓 생성시 더미 항목들 입력.
 		int cnt = 1;
@@ -24,7 +25,7 @@ public class Market {
 
 	public void helloMarket() {
 		System.out.println("\n*-PeaceNara에 오신걸 환영합니다.-*");
-		menu.marketMenu(this);
+		menu.marketMenu(this,user);
 
 	}
 
@@ -40,7 +41,7 @@ public class Market {
 
 		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
 												// 삭제시키기위함.
-		User user = new User("kyungss", "1234", 1000000); 
+//		User user = new User("kyungss", "1234", 1000000); 
 
 		while (true) {
 			try {
