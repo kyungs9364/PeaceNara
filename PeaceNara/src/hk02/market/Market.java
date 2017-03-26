@@ -10,6 +10,7 @@ import hk02.user.User;
 public class Market {
 	private ArrayList<Goods> goodsList; // 총 상품리스트
 	// private MyPage myPage = new MyPage();
+	Menu menu = new Menu();
 
 	public Market() { // 마켓 생성시 더미 항목들 입력.
 		int cnt = 1;
@@ -22,100 +23,24 @@ public class Market {
 	}
 
 	public void helloMarket() {
-		Scanner scan = new Scanner(System.in);
 		System.out.println("\n*-PeaceNara에 오신걸 환영합니다.-*");
-		Menu.helloMenuPrint();
+		menu.marketMenu(this);
 
-		while (true) {
-			System.out.println("\n>> 보고싶거나 하고싶은 번호를 입력해주세요.");
-			try {
-				int input = scan.nextInt();
-				switch (input) {
-				case 1:
-					allGoodsListPrint();
-					break;
-				case 2:
-					buy();
-					break;
-				case 3:
-					sell();
-					break;
-				case 4:
-					// page.myPageMenu();
-					System.out.println("미구현");
-					break;
-				case 5:
-					// logout();
-					System.out.println("미구현");
-					break;
-				default:
-					System.out.println("번호는 1~5까지만 있습니다.. 다시입력해주세요.");
-					break;
-				}
-			} catch (InputMismatchException e) {
-				scan.nextLine();
-				System.out.println("번호만 입력해주세요.");
-			}
-		}
 	}
 
-	public void allGoodsListPrint() {
-		System.out.println("--물품 목록-----------------------------------------------------------------");
-		System.out.println(" 번호  제품명     가격   판매자     날짜         상태");
-		System.out.println("============================================================================");
-		for (int i = goodsList.size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글
-															// 순.)
-			System.out.println(goodsList.get(i));
-		}
-		System.out.println("----------------------------------------------------------------------------");
-	}
+	public void buyMenuOpen() {
+		sellGoodsListPrint();
+		menu.buyMenu(this);
 
-	public void sellGoodsListPrint() {
-		System.out.println("--물품 목록-----------------------------------------------------------------");
-		System.out.println(" 번호  제품명     가격   판매자     날짜         상태");
-		System.out.println("============================================================================");
-		for (int i = goodsList.size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글
-															// 순.)
-			if (goodsList.get(i).getStock().equals("판매중")) {
-				System.out.println(goodsList.get(i));
-			}
-		}
-		System.out.println("----------------------------------------------------------------------------");
 	}
 
 	public void buy() {
 		// user 객체로 buylist를 불러온다.
 		// 현재 임시로 user 객체를 생성
-		Scanner scan = new Scanner(System.in);
 
-		sellGoodsListPrint();
-		Menu.buyMenuPrint();
-		try {
-			int input = scan.nextInt();
-			switch (input) {
-			case 1: // 아래 상황을 buy를 오버로딩해서 사용하고 case 1: 메소드명. 만 적을 계획.
-				myBuy();
-			case 2:
-				helloMarket();
-				break;
-
-			default:
-				System.out.println("번호는 1~2까지만 있습니다.. 다시입력해주세요.");
-				buy();
-				break;
-			}
-		} catch (InputMismatchException e) {
-			scan.nextLine();
-			System.out.println("숫자만 입력해주세요.\n");
-			buy();
-		}
-
-	}
-
-	public void myBuy() {
 		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
 												// 삭제시키기위함.
-		User user = new User("kyungss", "1234", 1000000);
+		User user = new User("kyungss", "1234", 1000000); 
 
 		while (true) {
 			try {
@@ -220,7 +145,29 @@ public class Market {
 		goodsList.get(goodsList.size() - 1).setSeller(input);
 		// goodsList.get(goodsList.size() - 1).setSeller(user.getName 예정);
 
-		// allGoodsListPrint();
+	}
+	
+	public void allGoodsListPrint() {
+		System.out.println("--물품 목록-----------------------------------------------------------------");
+		System.out.println(" 번호  제품명     가격   판매자     날짜         상태");
+		System.out.println("============================================================================");
+		for (int i = goodsList.size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글
+															// 순.)
+			System.out.println(goodsList.get(i));
+		}
+		System.out.println("----------------------------------------------------------------------------");
+	}
 
+	public void sellGoodsListPrint() {
+		System.out.println("--물품 목록-----------------------------------------------------------------");
+		System.out.println(" 번호  제품명     가격   판매자     날짜         상태");
+		System.out.println("============================================================================");
+		for (int i = goodsList.size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글
+															// 순.)
+			if (goodsList.get(i).getStock().equals("판매중")) {
+				System.out.println(goodsList.get(i));
+			}
+		}
+		System.out.println("----------------------------------------------------------------------------");
 	}
 }
