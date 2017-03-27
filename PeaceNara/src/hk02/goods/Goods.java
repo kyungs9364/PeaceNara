@@ -1,15 +1,17 @@
 package hk02.goods;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Goods {
 	private String title = ""; // 게시물 제목
-	private String content = ""; // 게시물 내용
+	ArrayList<String> content = new ArrayList<String>();
+	// private String content = ""; // 게시물 내용
 	private int number = 0; // 게시물 번호
 
 	private String model = ""; // 판매 물품 모델명
-	private String company = ""; // 판매 물품 제작사명
+	private String company = ""; // 판매 물품 제조사명
 	private int price = 0; // 판매 물품 가격
 
 	private String seller = ""; // 판매자 (id or 이름)
@@ -35,7 +37,7 @@ public class Goods {
 		
 		// 더미 데이터 입력을 위한 생성자
 		this.title = title;
-		this.content = content;
+		this.content.add(content);
 		this.number = number;
 		this.price = price;
 		this.seller = seller;
@@ -52,11 +54,11 @@ public class Goods {
 		this.title = title;
 	}
 
-	public String getContent() {
+	public ArrayList<String> getContent() {
 		return content;
 	}
 
-	public void setContent(String content) {
+	public void setContent(ArrayList<String> content) {
 		this.content = content;
 	}
 
@@ -127,9 +129,8 @@ public class Goods {
 	public String getTime2() {
 		return time2;
 	}
-
 	
-	@Override // 미완성
+	@Override 
 	public String toString() {		
 //		System.out.println(" NO   제목\t 가격\t 판매자\t등록일\t상태");  출력 상단 바
 		System.out.printf("%3d  %-7s\t %d\t %s\t %s\t",number,title,price,seller,time);
