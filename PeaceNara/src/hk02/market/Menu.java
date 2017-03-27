@@ -10,9 +10,10 @@ public class Menu {
 	MyPage page = new MyPage();
 	
 	public void marketMenu(Market market, User user){
-		System.out.println("------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------");
 		System.out.println("\t1.물품정보\t2.물품사기\t3.물품판매\t4.MyPage\t5.Logout");
-		System.out.println("------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------");
+
 		marketMenuEvent(market, user);
 	}
 	

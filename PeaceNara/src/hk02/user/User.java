@@ -44,6 +44,7 @@ public class User {
 		this.sellGoodsList = new ArrayList<Goods>();
 	}
 	
+
 	// 생성자
 	public User(String id, String pw, String cellPhone, int balance){
 		this.id = id;
@@ -137,7 +138,4 @@ public class User {
 	public void setSellGoodsList(ArrayList<Goods> sellGoodsList) {
 		this.sellGoodsList = sellGoodsList;
 	}
-
-	
-	
 }
