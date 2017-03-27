@@ -32,7 +32,7 @@ public class Market {
 	}
 
 	public void buyMenuOpen(User user) {
-		sellGoodsListPrint();
+		sellGoodsListPrint(user);
 		menu.buyMenu(this, user);
 
 	}
@@ -94,7 +94,7 @@ public class Market {
 			if (process.equals("N") || process.equals("n")) {
 				break;
 			} else if (process.equals("Y") || process.equals("y")) {
-				sellGoodsListPrint();
+				sellGoodsListPrint(user);
 			} else {
 				System.out.println("잘못입력하셨습니다. main으로 돌아갑니다.");
 				break;
@@ -199,7 +199,7 @@ public class Market {
 
 	}
 
-	public void sellGoodsListPrint() {
+	public void sellGoodsListPrint(User user) {
 		System.out.println("--물품 목록-----------------------------------------------------------------");
 		System.out.println(" 번호  게시글명     가격   판매자     날짜         상태");
 		System.out.println("============================================================================");
@@ -209,6 +209,8 @@ public class Market {
 				System.out.println(goodsList.get(i));
 			}
 		}
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++\t소지한 금액 : "+user.getBalance()+" 원");
 		System.out.println("----------------------------------------------------------------------------");
 	}
 
