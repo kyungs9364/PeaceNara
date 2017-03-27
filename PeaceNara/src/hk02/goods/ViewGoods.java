@@ -9,7 +9,10 @@ public class ViewGoods {
 		System.out.print(" 게 시 자 : "+goods.getSeller	());
 		System.out.println("\t\t\t\t\t 상    태 : "+goods.getStock());		
 		System.out.println("----------------------------------------------------------------------------");
-		System.out.println(" 내    용 : "+goods.getContent());
+		System.out.print(" 내    용 : ");
+		for(int i=0;i<goods.content.size();i++){
+			System.out.println(goods.content.get(i));
+		}
 		System.out.println("----------------------------------------------------------------------------");
 		System.out.print(" 가    격 : "+goods.getPrice());
 		System.out.print("\t\t\t 기    종 : "+goods.getModel());
