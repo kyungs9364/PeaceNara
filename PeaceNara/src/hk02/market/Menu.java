@@ -14,7 +14,7 @@ public class Menu {
 		Scanner scan = new Scanner(System.in);
 		while (true) {
 			System.out.println("*-------------------------------------=PeaceNara=--------------------------------------*");
-			System.out.println("\t1.물품정보\t2.물품사기\t3.물품판매\t4.MyPage\t5.Logout");
+			System.out.println("\t1.모든 물품정보\t2.물품사기\t3.물품판매\t4.MyPage\t5.Logout");
 			System.out.println("*--------------------------------------------------------------------------------------*");
 			
 			System.out.println("\n>> 보고싶거나 하고싶은 번호를 입력해주세요.");
@@ -23,7 +23,7 @@ public class Menu {
 				switch (input) {
 				case 1:
 					market.allGoodsListPrint();
-//					goodsMenu(market);
+					goodsMenu(market);
 					break;
 				case 2:
 					market.buyMenuOpen();
@@ -84,36 +84,36 @@ public class Menu {
 		}
 	}
 	
-//	public void goodsMenu(Market market){
-//		System.out.println("------------------------------------------------------------------------");
-//		System.out.println("\t1.물품상세정보\t2.Main");
-//		System.out.println("------------------------------------------------------------------------");
-//
-//		goodsMenuEvent(market);
-//	}
-//	
-//	public void goodsMenuEvent(Market market){
-//		Scanner scan = new Scanner(System.in);
-//		
-//		try {
-//			int input = scan.nextInt();
-//			switch (input) {
-//			case 1: 
-//				market.viewGoodsDetails();;
-//			case 2:
-//				market.helloMarket();
-//				break;
-//
-//			default:
-//				System.out.println("번호는 1~2까지만 있습니다.. 다시입력해주세요.");
-//				market.buy();
-//				break;
-//			}
-//		} catch (InputMismatchException e) {
-//			scan.nextLine();
-//			System.out.println("숫자만 입력해주세요.\n");
-//			market.buy();
-//		}
-//	}
+	public void goodsMenu(Market market){
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("\t1.물품상세정보열람\t2.Main");
+		System.out.println("------------------------------------------------------------------------");
+
+		goodsMenuEvent(market);
+	}
+	
+	public void goodsMenuEvent(Market market){
+		Scanner scan = new Scanner(System.in);
+		
+		try {
+			int input = scan.nextInt();
+			switch (input) {
+			case 1: 
+				market.allViewGoodsDetails();;
+			case 2:
+				market.helloMarket();
+				break;
+
+			default:
+				System.out.println("번호는 1~2까지만 있습니다.. 다시입력해주세요.");
+				market.buy();
+				break;
+			}
+		} catch (InputMismatchException e) {
+			scan.nextLine();
+			System.out.println("숫자만 입력해주세요.\n");
+			market.buy();
+		}
+	}
 
 }

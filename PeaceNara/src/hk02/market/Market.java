@@ -214,19 +214,50 @@ public class Market {
 	public void viewGoodsDetails(){
 		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
 												// 삭제시키기위함.
-		System.out.println("--상세번호를 보실 물품번호를 입력해주세요.-------------------------------");
+		System.out.println("--판매중인 물품의 상세정보를 보실 물품번호를 입력해주세요.-------------------------------");
 		
 		try {
 			int goodsNum = scan.nextInt();
+			if(goodsList.get(goodsNum-1).getStock().equals("판매완료")){
+				System.out.println("판매가 되어 정보를 열람할수 없는 번호입니다.\n");
+				System.out.println("정보를 열람하시려면 모든 물품정보 항목으로 들어가주세요.\n");
+				viewGoodsDetails();
+			}
 			vg.viewGoods(goodsList.get(goodsNum-1));
 			menu.buyMenu(this);
+			
 		} catch (InputMismatchException e) {
 			scan.nextLine();
-			System.out.println("숫자만 입력해주세요.");
+			System.out.println("숫자만 입력해주세요.\n");
 			viewGoodsDetails();
 		} catch (IndexOutOfBoundsException e){
 			System.out.println("\n물품의 정보가 존재하지 않습니다.. 다시 입력해주세요-\n");
 			viewGoodsDetails();
+		}
+
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
+	}
+	
+	public void allViewGoodsDetails(){ 
+		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
+												// 삭제시키기위함.
+		System.out.println("--상세정보를 보실 물품번호를 입력해주세요.-------------------------------");
+		
+		try {
+			int goodsNum = scan.nextInt();
+			vg.viewGoods(goodsList.get(goodsNum-1));
+			menu.goodsMenu(this);
+			
+		} catch (InputMismatchException e) {
+			scan.nextLine();
+			System.out.println("숫자만 입력해주세요.\n");
+			allViewGoodsDetails();
+		} catch (IndexOutOfBoundsException e){
+			System.out.println("\n물품의 정보가 존재하지 않습니다.. 다시 입력해주세요-\n");
+			allViewGoodsDetails();
 		}
 
 		catch (Exception e) {
