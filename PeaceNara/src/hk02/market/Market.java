@@ -10,9 +10,7 @@ import hk02.user.User;
 
 public class Market {
 	private ArrayList<Goods> goodsList; // 총 상품리스트
-	// private MyPage myPage = new MyPage();
 	Menu menu = new Menu();
-	// User user = new User(); // user의 더미 사용.
 	ViewGoods vg = new ViewGoods();
 
 	public Market() { // 마켓 생성시 더미 항목들 입력.
@@ -59,7 +57,7 @@ public class Market {
 					goodsList.get(goodsNum - 1).setStock(false);
 
 				} else if (goodsNum > goodsList.size() || goodsNum <= 0) {
-					System.out.println("물품번호를 다시 확인하여 주십시오.\n"); // 4번 안됨
+					System.out.println("물품번호를 다시 확인하여 주십시오.\n"); 
 
 				} else if (goodsList.get(goodsNum - 1).getStock().equals("판매완료")) {
 					System.out.println("판매가 완료된 제품입니다.\n");
@@ -75,7 +73,6 @@ public class Market {
 			} catch (InputMismatchException e) {
 				scan.nextLine();
 				System.out.println("숫자만 입력해주세요.");
-				// 이부분에서 main으로 돌아가지 읺게 만들어야함
 			}
 
 			catch (Exception e) {
@@ -175,14 +172,7 @@ public class Market {
 				System.out.println("\n!- 숫자로 입력해주세요.\n");
 			}
 		}
-
-		// System.out.println("--------------------------------------");
-		// System.out.println("* 판매자 명을 입력해주세요.");
-		// input = scan.nextLine();
-		// System.out.println("======================================");
-		// goodsList.get(goodsList.size() - 1).setSeller(input);
 		goodsList.get(goodsList.size() - 1).setSeller(user.getId());
-
 		user.setSellGoodsList(goodsList, goodsList.size() - 1);
 
 	}
@@ -222,7 +212,7 @@ public class Market {
 		try {
 			int goodsNum = scan.nextInt();
 			if (goodsList.get(goodsNum - 1).getStock().equals("판매완료")) {
-				System.out.println("판매가 되어 정보를 열람할수 없는 번호입니다.\n");
+				System.out.println("판매가 되어 정보를 열람할수 없는 번호입니다.");
 				System.out.println("정보를 열람하시려면 모든 물품정보 항목으로 들어가주세요.\n");
 				viewGoodsDetails(user);
 			}
