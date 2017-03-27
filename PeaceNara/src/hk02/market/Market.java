@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import hk02.goods.Goods;
+import hk02.goods.ViewGoods;
 import hk02.user.User;
 
 public class Market {
@@ -12,6 +13,7 @@ public class Market {
 	// private MyPage myPage = new MyPage();
 	Menu menu = new Menu();
 	User user = new User();  // user의 더미 사용.
+	ViewGoods vg = new ViewGoods();
 
 	public Market() { // 마켓 생성시 더미 항목들 입력.
 		int cnt = 1;
@@ -25,7 +27,7 @@ public class Market {
 
 	public void helloMarket() {
 		System.out.println("\n*-PeaceNara에 오신걸 환영합니다.-*");
-		menu.marketMenu(this,user);
+		menu.marketMenuEvent(this,user);
 
 	}
 
@@ -103,10 +105,8 @@ public class Market {
 	public void sell(/* 유저가들어옴 */) {
 		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
 												// 삭제시키기위함.
-
-		// 자신이 구매한 내역에서 올릴것인지 새로운 것을 올릴 것인지 선택 후
-		// 진행하는 방향도 생각중에 있음.
-
+		ArrayList<String> textTmp = new ArrayList<String>();
+		int cnt = 0;
 		goodsList.add(new Goods());
 
 		System.out.println("--------------------------------------");
@@ -114,10 +114,47 @@ public class Market {
 		String input = scan.nextLine();
 		System.out.println("======================================");
 		goodsList.get(goodsList.size() - 1).setTitle(input);
+		
+		System.out.println("* 내용을 입력해 주세요");
+		while (true) {
+			System.out.println();
+			System.out.println((cnt + 1) + "번째 행입니다.");
+			System.out.print("xx = 입력 완료");
+			System.out.print(" // yy = 이전 행 삭제");
+			System.out.println(" // zz = 내용 전체 삭제 후 새로 입력");
 
-		// System.out.println("내용을 입력해주세요.");
-		// temp= scan.nextLine();
-		// goodsList.get(goodsList.size()-1).setContent(temp);
+			textTmp.add(scan.nextLine());
+			if (textTmp.get(cnt).toLowerCase().equals("xx")) {
+				textTmp.remove(cnt);
+				System.out.println();
+				for (int i = 0; i < textTmp.size(); i++) {
+					System.out.println(textTmp.get(i));
+				}
+				System.out.println("입력하신 내용으로 저장하시려면 Y를 입력해주세요.");
+				if (scan.nextLine().toLowerCase().equals("y")) {
+					break;
+				} else {
+					continue;
+				}
+			} else if (textTmp.get(cnt).toLowerCase().equals("yy")) {
+				try {
+					textTmp.remove(cnt);
+					textTmp.remove(--cnt);
+					continue;
+				} catch (ArrayIndexOutOfBoundsException aioobe) {
+					// TODO: handle exception
+					System.out.println("삭제할 내용이 없습니다.");
+					cnt = 0;
+					continue;
+				}
+			} else if (textTmp.get(cnt).toLowerCase().equals("zz")) {
+				textTmp.clear();
+				cnt = 0;
+				continue;
+			}
+			cnt++;
+		}
+		goodsList.get(goodsList.size() - 1).setContent(textTmp);
 
 		// System.out.println("모델명을 입력해주세요.");
 		// temp= scan.nextLine();
@@ -157,6 +194,8 @@ public class Market {
 			System.out.println(goodsList.get(i));
 		}
 		System.out.println("----------------------------------------------------------------------------");
+		
+		
 	}
 
 	public void sellGoodsListPrint() {
@@ -170,5 +209,29 @@ public class Market {
 			}
 		}
 		System.out.println("----------------------------------------------------------------------------");
+	}
+	
+	public void viewGoodsDetails(){
+		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
+												// 삭제시키기위함.
+		System.out.println("--상세번호를 보실 물품번호를 입력해주세요.-------------------------------");
+		
+		try {
+			int goodsNum = scan.nextInt();
+			vg.viewGoods(goodsList.get(goodsNum-1));
+			menu.buyMenu(this);
+		} catch (InputMismatchException e) {
+			scan.nextLine();
+			System.out.println("숫자만 입력해주세요.");
+			viewGoodsDetails();
+		} catch (IndexOutOfBoundsException e){
+			System.out.println("\n물품의 정보가 존재하지 않습니다.. 다시 입력해주세요-\n");
+			viewGoodsDetails();
+		}
+
+		catch (Exception e) {
+			// TODO: handle exception
+			System.out.println(e);
+		}
 	}
 }
