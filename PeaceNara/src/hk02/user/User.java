@@ -161,7 +161,6 @@ public class User {
 	public ArrayList<Goods> getSellGoodsList() {
 		return sellGoodsList;
 	}
-
 	public void setSellGoodsList(ArrayList<Goods> sellGoodsList, int sellNumber) {
 		this.sellGoodsList.add(sellGoodsList.get(sellNumber));
 	}
