@@ -133,7 +133,7 @@ public class Menu {
 			case 1: 
 				market.directBuy(user,num);
 			case 2:
-				market.helloMarket(user);
+				goodsMenu(market,user);
 				break;
 
 			default:

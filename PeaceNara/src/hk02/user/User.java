@@ -163,11 +163,8 @@ public class User {
 	}
 
 	public void setSellGoodsList(ArrayList<Goods> sellGoodsList, int sellNumber) {
-<<<<<<< HEAD
 		this.sellGoodsList.add(sellGoodsList.get(sellNumber));
-=======
 		this.sellGoodsList.add(sellGoodsList.get(sellNumber));
->>>>>>> refs/remotes/origin/master
 	}
 
 	@Override

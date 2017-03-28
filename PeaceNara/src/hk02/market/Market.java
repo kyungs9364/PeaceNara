@@ -102,8 +102,8 @@ public class Market {
 	
 	public void directBuy(User user, int goodsNum){ 
 		
-		if (user.getBalance() >= goodsList.get(goodsNum).getPrice()
-				&& goodsList.get(goodsNum).getStock().equals("판매중")) {
+		if (goodsList.get(goodsNum).getStock().equals("판매중") &&
+				user.getBalance() >= goodsList.get(goodsNum).getPrice()) {
 
 			user.setBalance(user.getBalance() - goodsList.get(goodsNum).getPrice());
 			user.setBuyGoodsList(goodsList, (goodsNum));
@@ -266,6 +266,7 @@ public class Market {
 		try {
 			int goodsNum = scan.nextInt();
 			vg.viewGoods(goodsList.get(goodsNum - 1));
+			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++\t소지한 금액 : "+user.getBalance()+" 원");
 			menu.goodsMenuDetailsBuy(this, user, goodsNum-1);
 
 		} catch (InputMismatchException e) {
