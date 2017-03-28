@@ -162,8 +162,8 @@ public class User {
 		return sellGoodsList;
 	}
 
-	public void setSellGoodsList(ArrayList<Goods> sellGoodsList) {
-		this.sellGoodsList = sellGoodsList;
+	public void setSellGoodsList(ArrayList<Goods> sellGoodsList, int sellNumber) {
+		this.sellGoodsList.add(sellGoodsList.get(sellNumber));
 	}
 
 	@Override

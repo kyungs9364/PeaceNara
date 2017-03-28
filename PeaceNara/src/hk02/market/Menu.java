@@ -22,14 +22,13 @@ public class Menu {
 				int input = scan.nextInt();
 				switch (input) {
 				case 1:
-					market.allGoodsListPrint();
-					goodsMenu(market);
+					goodsMenu(market,user);
 					break;
 				case 2:
-					market.buyMenuOpen();
+					market.buyMenuOpen(user);
 					break;
 				case 3:
-					market.sell();
+					market.sell(user);
 					break;
 				case 4:
 					page.myPage(user);
@@ -49,70 +48,103 @@ public class Menu {
 		}
 	}
 	
-	public void buyMenu(Market market){
+	public void buyMenu(Market market, User user){
 		System.out.println("------------------------------------------------------------------------------");
 		System.out.println("\t1.구매하실 물품 번호 입력\t2.물품상세정보\t\t3.Main");
 		System.out.println("------------------------------------------------------------------------------");
-		buyMenuEvent(market);
+		buyMenuEvent(market,user);
 	}
 	
-	public void buyMenuEvent(Market market){
+	public void buyMenuEvent(Market market, User user){
 		Scanner scan = new Scanner(System.in);
 		
 		try {
 			int input = scan.nextInt();
 			switch (input) {
 			case 1: // 아래 상황을 buy를 오버로딩해서 사용하고 case 1: 메소드명. 만 적을 계획.
-				market.buy();
+				market.buy(user);
 				break;
 			case 2: 
-				market.viewGoodsDetails();
+				market.viewGoodsDetails(user);
 				break;
 			case 3:
-				market.helloMarket();
+				market.helloMarket(user);
 				break;
 
 			default:
 				System.out.println("번호는 1~3까지만 있습니다.. 다시입력해주세요.");
-				buyMenu(market);
+				buyMenu(market,user);
 				break;
 			}
 		} catch (InputMismatchException e) {
 			scan.nextLine();
 			System.out.println("숫자만 입력해주세요.\n");
-			buyMenu(market);
+			buyMenu(market,user);
 		}
 	}
 	
-	public void goodsMenu(Market market){
+	public void goodsMenu(Market market,User user){
+		market.allGoodsListPrint();
+		
 		System.out.println("------------------------------------------------------------------------");
 		System.out.println("\t1.물품상세정보열람\t2.Main");
 		System.out.println("------------------------------------------------------------------------");
 
-		goodsMenuEvent(market);
+		goodsMenuEvent(market,user);
 	}
 	
-	public void goodsMenuEvent(Market market){
+	public void goodsMenuEvent(Market market, User user){
 		Scanner scan = new Scanner(System.in);
 		
 		try {
 			int input = scan.nextInt();
 			switch (input) {
 			case 1: 
-				market.allViewGoodsDetails();;
+				market.allViewGoodsDetails(user);
 			case 2:
-				market.helloMarket();
+				market.helloMarket(user);
 				break;
 
 			default:
 				System.out.println("번호는 1~2까지만 있습니다.. 다시입력해주세요.");
-				market.buy();
+				goodsMenu(market,user);
 				break;
 			}
 		} catch (InputMismatchException e) {
 			scan.nextLine();
 			System.out.println("숫자만 입력해주세요.\n");
-			market.buy();
+			market.buy(user);
+		}
+	}
+	
+	public void goodsMenuDetailsBuy(Market market,User user,int num){
+		System.out.println("------------------------------------------------------------------------");
+		System.out.println("\t1.이 상품 구매하기\t2.취소");
+		System.out.println("------------------------------------------------------------------------");
+
+		goodsMenuDetailsBuyEvent(market,user,num);
+	}
+	public void goodsMenuDetailsBuyEvent(Market market, User user, int num){
+		Scanner scan = new Scanner(System.in);
+		
+		try {
+			int input = scan.nextInt();
+			switch (input) {
+			case 1: 
+				market.directBuy(user,num);
+			case 2:
+				market.helloMarket(user);
+				break;
+
+			default:
+				System.out.println("번호는 1~2까지만 있습니다.. 다시입력해주세요.");
+				goodsMenuDetailsBuy(market,user,num);
+				break;
+			}
+		} catch (InputMismatchException e) {
+			scan.nextLine();
+			System.out.println("숫자만 입력해주세요.\n");
+			goodsMenuDetailsBuy(market,user,num);
 		}
 	}
 
