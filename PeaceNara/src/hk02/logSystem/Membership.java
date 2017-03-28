@@ -138,7 +138,7 @@ public class Membership {
 	}
 
 	public void memberOut() {
-		login.memberOutMenu();
+
 	}
 
 }
