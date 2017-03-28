@@ -80,11 +80,6 @@ public class Market {
 				System.out.println(e);
 			}
 
-//			System.out.println("\n내가 구매한 목록 -----------------------------------------------------------");
-//			for (int i = user.getBuyGoodsList().size() - 1; i >= 0; i--) {
-//				System.out.println(user.getBuyGoodsList().get(i)); // 최신순 출력
-//			}
-//			System.out.println("----------------------------------------------------------------------------");
 			user.printBuyList();
 			
 			System.out.println("쇼핑을 계속 하시겠습니까 ? (Y/N)");
@@ -110,7 +105,7 @@ public class Market {
 			goodsList.get(goodsNum).setStock(false);
 			System.out.println("구매해주셔서 감사합니다.");
 
-		} else if (goodsList.get(goodsNum - 1).getStock().equals("판매완료")) {
+		} else if (goodsList.get(goodsNum).getStock().equals("판매완료")) {
 			System.out.println("판매가 완료된 제품입니다.\n");
 
 		} else if (user.getBalance() < goodsList.get(goodsNum).getPrice()) {

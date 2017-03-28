@@ -80,7 +80,7 @@ public class User {
 	public void printSellList() {
 		System.out.println(
 				"--판매중인 물품----------------------------------------------------------------------------------------------------------");
-		System.out.println(" 번호  제품명     가격   판매자     날짜         상태");
+		System.out.println(" 번호  게시글명     가격   판매자     날짜         상태");
 		System.out.println("============================================================================");
 		for (int i = getSellGoodsList().size() - 1; i >= 0; i--) { // 역순으로 게시글을
 																	// 보이게함.(최신글
@@ -95,7 +95,7 @@ public class User {
 	public void printBuyList() {
 		System.out.println(
 				"--구매 내역---------------------------------------------------------------------------------------------------------------");
-		System.out.println(" 번호  제품명     가격   판매자     날짜         상태");
+		System.out.println(" 번호  게시글명     가격   판매자     날짜         상태");
 		System.out.println("============================================================================");
 		for (int i = getBuyGoodsList().size() - 1; i >= 0; i--) { // 역순으로 게시글을
 																	// 보이게함.(최신글
@@ -163,7 +163,6 @@ public class User {
 	}
 
 	public void setSellGoodsList(ArrayList<Goods> sellGoodsList, int sellNumber) {
-		this.sellGoodsList.add(sellGoodsList.get(sellNumber));
 		this.sellGoodsList.add(sellGoodsList.get(sellNumber));
 	}
 

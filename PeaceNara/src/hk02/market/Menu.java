@@ -119,7 +119,7 @@ public class Menu {
 	
 	public void goodsMenuDetailsBuy(Market market,User user,int num){
 		System.out.println("------------------------------------------------------------------------");
-		System.out.println("\t1.이 상품 구매하기\t2.취소");
+		System.out.println("\t1.상품 바로구매\t2.취소");
 		System.out.println("------------------------------------------------------------------------");
 
 		goodsMenuDetailsBuyEvent(market,user,num);
