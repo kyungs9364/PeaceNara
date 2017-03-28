@@ -52,7 +52,6 @@ public class User {
 		this.pw = pw;
 		this.cellPhone = cellPhone;
 		this.pwCheck = pwCheck;
-		this.cellPhone = cellPhone;
 		this.balance = balance;
 		this.buyGoodsList = new ArrayList<Goods>();
 		this.sellGoodsList = new ArrayList<Goods>();
@@ -163,13 +162,12 @@ public class User {
 		return sellGoodsList;
 	}
 
-	public void setSellGoodsList(ArrayList<Goods> sellGoodsList) {
-		this.sellGoodsList = sellGoodsList;
+	public void setSellGoodsList(ArrayList<Goods> sellGoodsList, int sellNumber) {
+		this.sellGoodsList.add(sellGoodsList.get(sellNumber));
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", pw=" + pw + ", pwCheck=" + pwCheck + "]";
 	}
-
 }
