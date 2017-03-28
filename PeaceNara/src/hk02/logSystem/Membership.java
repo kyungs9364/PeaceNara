@@ -13,6 +13,7 @@ public class Membership {
 
 	User user = new User();
 	List<User> userList;
+	Login login = new Login(userList);
 
 	public Membership() {
 		this.userList = new ArrayList<>();
@@ -27,7 +28,6 @@ public class Membership {
 		while (true) {
 			try {
 				num = sc.nextInt();
-				Login login = new Login(userList);
 
 				switch (num) {
 				case 1:
@@ -138,7 +138,7 @@ public class Membership {
 	}
 
 	public void memberOut() {
-
+		login.memberOutMenu();
 	}
 
 }
