@@ -100,7 +100,7 @@ public class Market {
 		}
 	}
 	
-	public void directBuy(User user, int goodsNum){
+	public void directBuy(User user, int goodsNum){ 
 		
 		if (user.getBalance() >= goodsList.get(goodsNum).getPrice()
 				&& goodsList.get(goodsNum).getStock().equals("판매중")) {
