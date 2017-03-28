@@ -22,7 +22,6 @@ public class Menu {
 				int input = scan.nextInt();
 				switch (input) {
 				case 1:
-					market.allGoodsListPrint();
 					goodsMenu(market,user);
 					break;
 				case 2:
@@ -50,9 +49,9 @@ public class Menu {
 	}
 	
 	public void buyMenu(Market market, User user){
-		System.out.println("------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
 		System.out.println("\t1.구매하실 물품 번호 입력\t2.물품상세정보\t\t3.Main");
-		System.out.println("------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
 		buyMenuEvent(market,user);
 	}
 	
@@ -85,9 +84,11 @@ public class Menu {
 	}
 	
 	public void goodsMenu(Market market,User user){
-		System.out.println("------------------------------------------------------------------------");
+		market.allGoodsListPrint();
+		
+		System.out.println("----------------------------------------------------------------------------");
 		System.out.println("\t1.물품상세정보열람\t2.Main");
-		System.out.println("------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
 
 		goodsMenuEvent(market,user);
 	}
@@ -113,6 +114,37 @@ public class Menu {
 			scan.nextLine();
 			System.out.println("숫자만 입력해주세요.\n");
 			market.buy(user);
+		}
+	}
+	
+	public void goodsMenuDetailsBuy(Market market,User user,int num){
+		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("\t1.상품 바로구매\t2.취소");
+		System.out.println("----------------------------------------------------------------------------");
+
+		goodsMenuDetailsBuyEvent(market,user,num);
+	}
+	public void goodsMenuDetailsBuyEvent(Market market, User user, int num){
+		Scanner scan = new Scanner(System.in);
+		
+		try {
+			int input = scan.nextInt();
+			switch (input) {
+			case 1: 
+				market.directBuy(user,num);
+			case 2:
+				goodsMenu(market,user);
+				break;
+
+			default:
+				System.out.println("번호는 1~2까지만 있습니다.. 다시입력해주세요.");
+				goodsMenuDetailsBuy(market,user,num);
+				break;
+			}
+		} catch (InputMismatchException e) {
+			scan.nextLine();
+			System.out.println("숫자만 입력해주세요.\n");
+			goodsMenuDetailsBuy(market,user,num);
 		}
 	}
 
