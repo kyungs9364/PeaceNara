@@ -27,7 +27,7 @@ public class Membership {
 			System.out.println("-------------------");
 			System.out.println("1.로그인    2.회원가입");
 			System.out.println("-------------------");
-			try {
+			try { 
 				num = sc.nextInt();
 				login = new Login(userList);
 				switch (num) {
