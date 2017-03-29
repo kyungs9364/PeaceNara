@@ -9,7 +9,7 @@ import hk02.user.User;
 
 public class Menu {
 	MyPage page = new MyPage();
-	Membership mbs = new Membership();
+	Membership mbs = new Membership();  // 여기서 한번 더 객체를 생성하는데 괜찮은지 생각해보기.
 	
 	
 	public void marketMenuEvent(Market market, User user){
@@ -37,7 +37,7 @@ public class Menu {
 					break;
 				case 5:
 					System.out.println("->'"+user.getId() +"' 님은 로그아웃되셨습니다..\n"); 
-					mbs.memberMenu();
+					mbs.memberMenu(market);
 					break;
 				default:
 					System.out.println("번호는 1~5까지만 있습니다.. 다시입력해주세요.");
