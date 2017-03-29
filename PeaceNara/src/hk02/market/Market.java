@@ -9,16 +9,17 @@ import hk02.goods.ViewGoods;
 import hk02.user.User;
 
 public class Market {
-	private static ArrayList<Goods> goodsList = new ArrayList<Goods>();; // 총 상품리스트
+	private ArrayList<Goods> goodsList; // 총 상품리스트
 	Menu menu = new Menu();
 	ViewGoods vg = new ViewGoods();
 
 	public Market() { // 마켓 생성시 더미 항목들 입력.
 		int cnt = 1;
-//		goodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd", "2017/03/23"));
-//		goodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw", "2017/03/20"));
-//		goodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd", "2017/03/19"));
-//		goodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd", "2017/03/23"));
+		goodsList = new ArrayList<Goods>(); // 총 상품리스트
+		goodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd", "2017/03/23"));
+		goodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw", "2017/03/20"));
+		goodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd", "2017/03/19"));
+		goodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd", "2017/03/23"));
 
 	}
 
@@ -178,22 +179,22 @@ public class Market {
 			try {
 				num = scan.nextInt();
 				if(num == 1){
-					goodsList.get(goodsList.size()-1).setCompany("삼성");
+					goodsList.get(4).setCompany("삼성");
 					break;
 				}else if(num == 2){
-					goodsList.get(goodsList.size()-1).setCompany("Apple");
+					goodsList.get(4).setCompany("Apple");
 					break;
 				}else if(num == 3){
-					goodsList.get(goodsList.size()-1).setCompany("LG");
+					goodsList.get(4).setCompany("LG");
 					break;
 				}else if(num == 4){
-					goodsList.get(goodsList.size()-1).setCompany("팬택");
+					goodsList.get(4).setCompany("팬택");
 					break;
 				}else if(num == 5){
-					goodsList.get(goodsList.size()-1).setCompany("Sony");
+					goodsList.get(4).setCompany("Sony");
 					break;
 				}else if(num == 6){
-					goodsList.get(goodsList.size()-1).setCompany("기타");
+					goodsList.get(4).setCompany("기타");
 					break;
 				}else{
 					System.out.println("표시된 범위 내에서 선택해주세요.");
