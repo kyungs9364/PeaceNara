@@ -42,7 +42,7 @@ public class MyPage {
 	}
 	
 	// Scanner로 String으로 입력받아서 int반환 (유효성검사: 1, 2, 3)
-	public int input123(){
+	public static int input123(){
 		Scanner scan = new Scanner(System.in);
 		String tmp = null;
 		int result = 0;

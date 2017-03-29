@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import hk02.user.MyPage;
 import hk02.user.User;
 
 public class Membership {
@@ -20,37 +21,29 @@ public class Membership {
 	public void memberMenu() {
 		int num = 0;
 		Scanner sc = new Scanner(System.in);
+		Login login = new Login(); //userList를 static으로 선언했으니 관련 내용 바꿈
+//		Login login = new Login(userList);
 
 		while (true) {
 			System.out.println("-------------------------------------------------------------------------------");
-			System.out.println("\t1.로그인    2.회원가입");
+			System.out.println("              1.로그인          2.회원가입         3.프로그램 종료");
 			System.out.println("-------------------------------------------------------------------------------");
-			try { 
-				num = sc.nextInt();
-				Login login = new Login(userList);
-				switch (num) {
+			num = MyPage.input123(); // MyPage의 유효성검사 가져다 씀.
+			System.out.println();
+			switch (num) {
 				case 1:
 					login.login();
-					login.memberOut();
-					break;
+					continue;
 				case 2:
 					input();
-					login.login();
-					break;
-
+					continue;
+				case 3:
+					System.out.println("PeaceNara를 종료합니다.");
+					System.exit(1);
 				default:
-					System.out.println("1과 2 중에 입력하세요");
-				}
-
-			} catch (InputMismatchException e) {
-				System.out.println("숫자를 입력하세요");
-				sc.nextLine();
+					break;
 			}
 		}
-	}
-
-	public boolean isCellphone(String str) {
-		return str.matches("(01[016789])-(\\d{3,4})-(\\d{4})");
 	}
 
 	public void input() {
@@ -98,24 +91,29 @@ public class Membership {
 			break;
 		}
 
+		String cellPhone = null;
 		while (true) {
-			System.out.print("핸드폰번호 : ");
-			String cellPhone = sc.nextLine().replaceAll("\\s", "");
-			isCellphone(cellPhone);
+			System.out.print("핸드폰번호(ex: 010-1234-5678) : ");
+			cellPhone = sc.nextLine().replaceAll("\\s", "");
+			if(!isCellphone(cellPhone)) {
+				System.out.println("올바른 형식으로 입력해주세요.");
+				continue;
+			}
 			user.setCellPhone(cellPhone);
 			break;
 		}
 
+		int balance = 0;
 		while (true) {
-			System.out.print("잔액 : ");
-			int balance = sc.nextInt();
+			System.out.print("잔액(\\) : ");
 			try {
+				balance = sc.nextInt();
 				user.setBalance(balance);
+				break;
 			} catch (InputMismatchException e) {
 				System.out.println("숫자를 입력하세요");
 				sc.nextLine();
 			}
-			break;
 		}
 
 		while (true) {
@@ -124,14 +122,18 @@ public class Membership {
 			if (str.equalsIgnoreCase("y")) {
 				userList.add(new User(user.getId(), user.getPw(), user.getPwCheck(), user.getCellPhone(),
 						user.getBalance()));
-				System.out.println("감사합니다. 가입되셨습니다.");
+				System.out.println("감사합니다. 가입되셨습니다.\n");
 			} else if (str.equalsIgnoreCase("n")) {
-				System.out.println("등록이 취소되었습니다.");
+				System.out.println("등록이 취소되었습니다.\n");
 			} else {
 				System.out.println("다시 입력해주세요.");
 				continue;
 			}
 			break;
 		}
+	}
+	
+	public boolean isCellphone(String str) {
+		return str.matches("(01[016789])-(\\d{3,4})-(\\d{4})");
 	}
 }

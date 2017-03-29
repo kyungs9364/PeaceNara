@@ -1,22 +1,24 @@
 package hk02.logSystem;
 
-import java.util.List;
 import java.util.Scanner;
-
 import hk02.market.Market;
-import hk02.user.User;
 
 public class Login {
 	int num = 0;
 	String loginId = "";
 	String loginPw = "";
 	Scanner sc = new Scanner(System.in);
-	List<User> userList;
+	//	List<User> userList; 
+	// 이 클래스의 모든 userList -> Membership.userList로 바꿈
 	Market market = new Market();
 
-	public Login(List<User> userList) {
-		this.userList = userList;
+	
+	public Login() {
 	}
+	
+//	public Login(List<User> userList) {
+//		this.userList = userList;
+//	}
 
 	public void login() {
 		while (true) {
@@ -27,20 +29,20 @@ public class Login {
 			loginPw = sc.nextLine();
 
 			int idx = 0;
-			for (int i = 0; i < userList.size(); i++) {
-				if (loginId.equals(userList.get(i).getId()) && loginPw.equals(userList.get(i).getPw())) {
+			for (int i = 0; i < Membership.userList.size(); i++) {
+				if (loginId.equals(Membership.userList.get(i).getId()) && loginPw.equals(Membership.userList.get(i).getPw())) {
 					break;
 				} else {
 					idx++;
 				}
 			}
 
-			if (idx >= userList.size()) {
+			if (idx >= Membership.userList.size()) {
 				System.out.println("일치하는 회원이 없습니다.");
 			} else if (idx >= 0) {
-				System.out.println(userList.get(idx).getId() + "님 로그인 성공");
-				market.helloMarket(userList.get(idx));
-				memberOut();
+				System.out.println("\n"+Membership.userList.get(idx).getId() + "님, 로그인하셨습니다.");
+				market.helloMarket(Membership.userList.get(idx));
+//				memberOut();
 			}
 		}
 	}
@@ -60,18 +62,18 @@ public class Login {
 				}
 
 				int idx = 0;
-				for (int i = 0; i < userList.size(); i++) {
-					if (loginId.equals(userList.get(i).getId()) && loginPw.equals(userList.get(i).getPw())) {
+				for (int i = 0; i < Membership.userList.size(); i++) {
+					if (loginId.equals(Membership.userList.get(i).getId()) && loginPw.equals(Membership.userList.get(i).getPw())) {
 						break;
 					} else {
 						idx++;
 					}
 				}
 
-				if (idx >= userList.size()) {
+				if (idx >= Membership.userList.size()) {
 					System.out.println("일치하는 회원이 없습니다.");
 				} else if (idx >= 0) {
-					userList.remove(idx);
+					Membership.userList.remove(idx);
 					System.out.println(loginId + "님 탈퇴되었습니다.");
 					break;
 				}
