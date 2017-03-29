@@ -3,11 +3,13 @@ package hk02.market;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import hk02.logSystem.Membership;
 import hk02.user.MyPage;
 import hk02.user.User;
 
 public class Menu {
 	MyPage page = new MyPage();
+	Membership mbs = new Membership();
 	
 	
 	public void marketMenuEvent(Market market, User user){
@@ -34,8 +36,8 @@ public class Menu {
 					page.myPage(user);
 					break;
 				case 5:
-					// logout();
-					System.out.println("미구현");
+					System.out.println("->'"+user.getId() +"' 님은 로그아웃되셨습니다..\n"); 
+					mbs.memberMenu();
 					break;
 				default:
 					System.out.println("번호는 1~5까지만 있습니다.. 다시입력해주세요.");
