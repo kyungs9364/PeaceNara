@@ -5,6 +5,7 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
+import hk02.user.InputCheck;
 import hk02.user.MyPage;
 import hk02.user.User;
 
@@ -28,7 +29,7 @@ public class Membership {
 			System.out.println("-------------------------------------------------------------------------------");
 			System.out.println("              1.로그인          2.회원가입         3.프로그램 종료");
 			System.out.println("-------------------------------------------------------------------------------");
-			num = MyPage.input123(); // MyPage의 유효성검사 가져다 씀.
+			num = InputCheck.input123(); // MyPage의 유효성검사 가져다 씀.
 			System.out.println();
 			switch (num) {
 				case 1:
