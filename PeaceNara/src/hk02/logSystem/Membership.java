@@ -21,13 +21,12 @@ public class Membership {
 
 	public void memberMenu() {
 		int num = 0;
-		Scanner sc = new Scanner(System.in);
 		Login login = new Login(); //userList를 static으로 선언했으니 관련 내용 바꿈
 //		Login login = new Login(userList);
 
 		while (true) {
 			System.out.println("-------------------------------------------------------------------------------");
-			System.out.println("              1.로그인          2.회원가입         3.프로그램 종료");
+			System.out.println("              1.로그인          2.회원가입         3.종료");
 			System.out.println("-------------------------------------------------------------------------------");
 			num = InputCheck.input123(); // MyPage의 유효성검사 가져다 씀.
 			System.out.println();
@@ -50,9 +49,11 @@ public class Membership {
 	public void input() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("--회원가입--------------------------------------------------------------------");
+		
+		String id = null; 
 		while (true) {
 			System.out.print("아이디 : ");
-			String id = sc.nextLine().replaceAll("\\s", "");
+			id = sc.nextLine().replaceAll("\\s", "");
 			if (id.length() > 10) {
 				System.out.println("열글자 이하로 입력하세요.");
 				continue;
@@ -81,9 +82,10 @@ public class Membership {
 			break;
 		}
 
+		String pwCheck = null;
 		while (true) {
 			System.out.print("비밀번호 확인 : ");
-			String pwCheck = sc.nextLine().replaceAll("\\s", "");
+			pwCheck = sc.nextLine().replaceAll("\\s", "");
 			if (!pw.equals(pwCheck)) {
 				System.out.println("다시 확인해 주세요");
 				continue;
@@ -117,9 +119,10 @@ public class Membership {
 			}
 		}
 
+		String str = null;
 		while (true) {
 			System.out.println("등록하시겠습니까?(y/n)");
-			String str = sc.next();
+			str = sc.next();
 			if (str.equalsIgnoreCase("y")) {
 				userList.add(new User(user.getId(), user.getPw(), user.getPwCheck(), user.getCellPhone(),
 						user.getBalance()));
