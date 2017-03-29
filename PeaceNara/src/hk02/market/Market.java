@@ -14,7 +14,7 @@ public class Market {
 	ViewGoods vg = new ViewGoods();
 
 	public Market() { // 마켓 생성시 더미 항목들 입력.
-		int cnt = 1;
+		int cnt = 1; 
 		goodsList = new ArrayList<Goods>(); // 총 상품리스트
 		goodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd", "2017/03/23"));
 		goodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw", "2017/03/20"));
