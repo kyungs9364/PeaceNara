@@ -49,9 +49,9 @@ public class Menu {
 	}
 	
 	public void buyMenu(Market market, User user){
-		System.out.println("------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
 		System.out.println("\t1.구매하실 물품 번호 입력\t2.물품상세정보\t\t3.Main");
-		System.out.println("------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
 		buyMenuEvent(market,user);
 	}
 	
@@ -86,9 +86,9 @@ public class Menu {
 	public void goodsMenu(Market market,User user){
 		market.allGoodsListPrint();
 		
-		System.out.println("------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
 		System.out.println("\t1.물품상세정보열람\t2.Main");
-		System.out.println("------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
 
 		goodsMenuEvent(market,user);
 	}
@@ -118,9 +118,9 @@ public class Menu {
 	}
 	
 	public void goodsMenuDetailsBuy(Market market,User user,int num){
-		System.out.println("------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
 		System.out.println("\t1.상품 바로구매\t2.취소");
-		System.out.println("------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
 
 		goodsMenuDetailsBuyEvent(market,user,num);
 	}

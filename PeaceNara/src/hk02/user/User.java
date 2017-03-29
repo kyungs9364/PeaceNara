@@ -23,17 +23,17 @@ public class User {
 		this.balance = 305000;
 		this.buyGoodsList = new ArrayList<Goods>();
 		this.sellGoodsList = new ArrayList<Goods>();
-		buyGoodsList.add(new Goods("V20", "가개통", "LG-F800K", "LG", 1, 500000, "skd", "2017/03/23"));
-		buyGoodsList.add(new Goods("갤럭시 S7", "6개월 사용", "SM-G930S", "삼성", 2, 450000, "ksw", "2017/03/20"));
-		buyGoodsList.add(new Goods("G5", "1년 사용", "G5", "LG-F700S", 3, 300000, "skd", "2017/03/19"));
-		buyGoodsList.add(new Goods("iphone 7", "3개월 사용", "iPhone 7", "Apple", 4, 600000, "skd", "2017/03/23"));
+		buyGoodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd", "2017/03/23"));
+		buyGoodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw", "2017/03/20"));
+		buyGoodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd", "2017/03/19"));
+		buyGoodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd", "2017/03/23"));
 		for (int i = 0; i < buyGoodsList.size(); i++) {
 			buyGoodsList.get(i).setStock(false);
 		}
-		sellGoodsList.add(new Goods("V20", "가개통", "LG-F800K", "LG", 1, 500000, "skd", "2017/03/23"));
-		sellGoodsList.add(new Goods("갤럭시 S7", "6개월 사용", "SM-G930S", "삼성", 2, 450000, "ksw", "2017/03/20"));
-		sellGoodsList.add(new Goods("G5", "1년 사용", "G5", "LG-F700S", 3, 300000, "skd", "2017/03/19"));
-		sellGoodsList.add(new Goods("iphone 7", "3개월 사용", "iPhone 7", "Apple", 4, 600000, "skd", "2017/03/23"));
+		sellGoodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd", "2017/03/23"));
+		sellGoodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw", "2017/03/20"));
+		sellGoodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd", "2017/03/19"));
+		sellGoodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd", "2017/03/23"));
 	}
 
 	// 이 생성자는 삭제 예정
@@ -161,7 +161,6 @@ public class User {
 	public ArrayList<Goods> getSellGoodsList() {
 		return sellGoodsList;
 	}
-
 	public void setSellGoodsList(ArrayList<Goods> sellGoodsList, int sellNumber) {
 		this.sellGoodsList.add(sellGoodsList.get(sellNumber));
 	}
