@@ -33,7 +33,7 @@ public class MyPage {
 			} else if(num == 2) {
 				updatePw(user); // 비밀번호 변경
 				continue;
-			} else if(num == 3) {
+//			} else if(num == 3) {
 				
 			} else {
 				System.out.println("---------------------------------------------------------------------------------------------------------------------------");
