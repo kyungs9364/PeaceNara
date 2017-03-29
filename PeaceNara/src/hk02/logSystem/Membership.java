@@ -8,12 +8,9 @@ import java.util.Scanner;
 import hk02.user.User;
 
 public class Membership {
-	Scanner sc = new Scanner(System.in);
-	int num = 0;
 
 	User user = new User();
 	public static List<User> userList = new ArrayList<>();
-	Login login;
 
 	public Membership() {
 		userList.add(new User("jhrrr", "a123123", "a123123", "010-1234-5678", 500000));
@@ -21,21 +18,23 @@ public class Membership {
 	}
 
 	public void memberMenu() {
+		int num = 0;
+		Scanner sc = new Scanner(System.in);
 
 		while (true) {
-			System.out.println("-------------------");
-			System.out.println("1.로그인    2.회원가입");
-			System.out.println("-------------------");
-			try {
+			System.out.println("-------------------------------------------------------------------------------");
+			System.out.println("\t1.로그인    2.회원가입");
+			System.out.println("-------------------------------------------------------------------------------");
+			try { 
 				num = sc.nextInt();
-				login = new Login(userList);
+				Login login = new Login(userList);
 				switch (num) {
 				case 1:
 					login.login();
+					login.memberOut();
 					break;
 				case 2:
 					input();
-					list(userList);
 					login.login();
 					break;
 
@@ -55,7 +54,8 @@ public class Membership {
 	}
 
 	public void input() {
-		System.out.println("---------회원가입---------");
+		Scanner sc = new Scanner(System.in);
+		System.out.println("--회원가입--------------------------------------------------------------------");
 		while (true) {
 			System.out.print("아이디 : ");
 			String id = sc.nextLine().replaceAll("\\s", "");
@@ -67,7 +67,6 @@ public class Membership {
 				System.out.println("다섯글자 이상으로 입력하세요.");
 				continue;
 			}
-
 			user.setId(id);
 			break;
 		}
@@ -89,7 +88,7 @@ public class Membership {
 		}
 
 		while (true) {
-			System.out.println("비밀번호 확인 : ");
+			System.out.print("비밀번호 확인 : ");
 			String pwCheck = sc.nextLine().replaceAll("\\s", "");
 			if (!pw.equals(pwCheck)) {
 				System.out.println("다시 확인해 주세요");
@@ -100,7 +99,7 @@ public class Membership {
 		}
 
 		while (true) {
-			System.out.println("핸드폰번호 : ");
+			System.out.print("핸드폰번호 : ");
 			String cellPhone = sc.nextLine().replaceAll("\\s", "");
 			isCellphone(cellPhone);
 			user.setCellPhone(cellPhone);
@@ -108,7 +107,7 @@ public class Membership {
 		}
 
 		while (true) {
-			System.out.println("잔액 : ");
+			System.out.print("잔액 : ");
 			int balance = sc.nextInt();
 			try {
 				user.setBalance(balance);
@@ -133,12 +132,6 @@ public class Membership {
 				continue;
 			}
 			break;
-		}
-	}
-
-	public void list(List<User> userList) {
-		for (int i = 0; i < userList.size(); i++) {
-			System.out.println(userList.get(i).toString());
 		}
 	}
 }
