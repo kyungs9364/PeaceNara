@@ -128,8 +128,8 @@ public class Goods {
 		if(title.length() < 6){
 			System.out.print("\t");	
 		}		
-		System.out.printf(" %d\t %s\t",price,seller);
-		if(seller.length() < 4){
+		System.out.printf(" %d\t     %s\t",price,seller);
+		if(seller.length() < 6){
 			System.out.print("\t");	
 		}
 		System.out.printf(" %s\t",time);

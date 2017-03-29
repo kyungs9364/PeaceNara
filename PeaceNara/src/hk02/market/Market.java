@@ -229,29 +229,29 @@ public class Market {
 
 	public void allGoodsListPrint() {
 		System.out.println("--물품 목록--------------------------------------------------------------------");
-		System.out.println(" 번호  게시글명     가격   판매자     날짜         상태");
-		System.out.println("============================================================================");
+		System.out.println(" No\t게시글명\t  가격\t    판매자\t\t   날짜\t\t 상태");
+		System.out.println("===============================================================================");
 		for (int i = goodsList.size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글
 															// 순.)
 			System.out.println(goodsList.get(i));
 		}
-		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
 
 	}
 
 	public void sellGoodsListPrint(User user) {
 		System.out.println("--물품 목록--------------------------------------------------------------------");
-		System.out.println(" 번호  게시글명     가격   판매자     날짜         상태");
-		System.out.println("============================================================================");
+		System.out.println(" No\t게시글명\t  가격\t    판매자\t\t   날짜\t\t 상태");
+		System.out.println("===============================================================================");
 		for (int i = goodsList.size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글
 															// 순.)
 			if (goodsList.get(i).getStock().equals("판매중")) {
 				System.out.println(goodsList.get(i));
 			}
 		}
-		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++\t소지한 금액 : "+user.getBalance()+" 원");
-		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
 	}
 
 	public void viewGoodsDetails(User user) {
@@ -287,7 +287,7 @@ public class Market {
 	public void allViewGoodsDetails(User user) {
 		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
 												// 삭제시키기위함.
-		System.out.println("--상세정보를 보실 물품번호를 입력해주세요.-----------------------------------------------");
+		System.out.println("--상세정보를 보실 물품번호를 입력해주세요.--------------------------------------");
 
 
 		try {
