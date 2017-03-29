@@ -12,11 +12,10 @@ public class Membership {
 	int num = 0;
 
 	User user = new User();
-	List<User> userList;
+	public static List<User> userList = new ArrayList<>();
 	Login login;
 
 	public Membership() {
-		this.userList = new ArrayList<>();
 		userList.add(new User("jhrrr", "a123123", "a123123", "010-1234-5678", 500000));
 		userList.add(new User("yksss", "b123123", "b123123", "010-1234-5678", 300000));
 	}

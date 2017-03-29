@@ -3,11 +3,13 @@ package hk02.market;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import hk02.logSystem.Membership;
 import hk02.user.MyPage;
 import hk02.user.User;
 
 public class Menu {
 	MyPage page = new MyPage();
+	Membership mbs = new Membership();
 	
 	
 	public void marketMenuEvent(Market market, User user){
@@ -34,8 +36,8 @@ public class Menu {
 					page.myPage(user);
 					break;
 				case 5:
-					// logout();
-					System.out.println("미구현");
+					System.out.println("->'"+user.getId() +"' 님은 로그아웃되셨습니다..\n"); 
+					mbs.memberMenu();
 					break;
 				default:
 					System.out.println("번호는 1~5까지만 있습니다.. 다시입력해주세요.");
@@ -49,9 +51,9 @@ public class Menu {
 	}
 	
 	public void buyMenu(Market market, User user){
-		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("\t1.구매하실 물품 번호 입력\t2.물품상세정보\t\t3.Main");
-		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
 		buyMenuEvent(market,user);
 	}
 	
@@ -86,9 +88,9 @@ public class Menu {
 	public void goodsMenu(Market market,User user){
 		market.allGoodsListPrint();
 		
-		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("\t1.물품상세정보열람\t2.Main");
-		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
 
 		goodsMenuEvent(market,user);
 	}
@@ -118,9 +120,9 @@ public class Menu {
 	}
 	
 	public void goodsMenuDetailsBuy(Market market,User user,int num){
-		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("\t1.상품 바로구매\t2.취소");
-		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
 
 		goodsMenuDetailsBuyEvent(market,user,num);
 	}
