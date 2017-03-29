@@ -7,9 +7,9 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		
+		Market market = new Market();
 		Membership mbs = new Membership();
-		mbs.memberMenu();
+		mbs.memberMenu(market);
 		
 	}
 
