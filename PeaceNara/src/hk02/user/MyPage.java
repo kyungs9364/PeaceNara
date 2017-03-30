@@ -84,9 +84,7 @@ public class MyPage {
 	
 	// 비밀번호 변경 전에 이전 비밀번호 확인
 	public boolean checkPw(User user){
-		// 비밀번호 5회 이상 틀리면 변경안되는 기능 추가 고려
-		System.out.println("이전 비밀번호를 입력하세요.");
-		
+		System.out.println("비밀번호를 입력하세요.");
 		Scanner scan = new Scanner(System.in);
 		String tmp = null;
 		
@@ -107,36 +105,32 @@ public class MyPage {
 	// 회원 탈퇴
 	public void memberOut(User user) {
 		Scanner sc = new Scanner(System.in);
-		int num = 0;
-		String inputPw = null;
+		System.out.println("회원 탈퇴를 진행합니다.");
+		
+		String ans = ""; // 정말 탈퇴할지 묻는 질문에 대한 대답 y/n
+		boolean tmp = false;
+		
 		while (true) {
-			System.out.println("1.회원탈퇴");
-			num = sc.nextInt();
-			if (num == 1) {
-				System.out.print("비밀번호 입력 : ");
-				inputPw = sc.next();
-				if (!(inputPw.equals(user.getPw()))) {
-					System.out.println("비밀번호를 확인해주세요.");
-					continue;
-				}
-				int idx = 0;
-				for (int i = 0; i < Membership.userList.size(); i++) {
-					if (user.getId().equals(Membership.userList.get(i).getId()) && user.getPw().equals(Membership.userList.get(i).getPw())) {
-						break;
-					} else {
-						idx++;
-					}
-				}
-				if (idx >= Membership.userList.size()) {
-					System.out.println("일치하는 회원이 없습니다.");
-				} else if (idx >= 0) {
-					Membership.userList.remove(idx);
-					System.out.println(user.getId() + "님 탈퇴되었습니다.");
+			System.out.println("정말 탈퇴하시겠습니까? (Y / N)");
+			ans = InputCheck.inputYN();
+			
+			tmp = checkPw(user);
+			
+			int idx = 0;
+			for (int i = 0; i < Membership.userList.size(); i++) {
+				if (user.getId().equals(Membership.userList.get(i).getId()) && user.getPw().equals(Membership.userList.get(i).getPw())) {
 					break;
+				} else {
+					idx++;
 				}
-			} else {
-				System.out.println("다시 입력하세요");
-				continue;
+			}
+			
+			if (idx >= Membership.userList.size()) {
+				System.out.println("일치하는 회원이 없습니다.");
+			} else if (idx >= 0) {
+				Membership.userList.remove(idx);
+				System.out.println(user.getId() + "님 탈퇴되었습니다.");
+				break;
 			}
 		}
 	}
