@@ -122,16 +122,13 @@ public class Goods {
 	}
 	
 	@Override 
-	public String toString() {		
-//		System.out.println(" NO   제목\t 가격\t 판매자\t등록일\t상태");  출력 상단 바
+	public String toString() {
 		System.out.printf("%3d  %-7s\t",number,title);
 		if(title.length() < 6){
 			System.out.print("\t");	
 		}		
 		System.out.printf(" %d\t     %s\t",price,seller);
-		if(seller.length() < 6){
-			System.out.print("\t");	
-		}
+
 		System.out.printf(" %s\t",time);
 		System.out.print(getStock());
 		return "";
