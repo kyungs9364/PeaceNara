@@ -22,7 +22,7 @@ public class Login {
 
 	public void login(Market market) {
 		while (true) {
-			System.out.println("--로그인----------------------------------------------------------------------");
+			System.out.println("--로그인--------------------------------------------------------------------------------------");
 			System.out.print("아이디 : ");
 			loginId = sc.nextLine();
 			System.out.print("비밀번호 : ");
@@ -39,6 +39,7 @@ public class Login {
 
 			if (idx >= Membership.userList.size()) {
 				System.out.println("일치하는 회원이 없습니다.");
+				break;
 			} else if (idx >= 0) {
 				System.out.println("\n"+Membership.userList.get(idx).getId() + "님, 로그인하셨습니다.");
 				market.helloMarket(Membership.userList.get(idx));

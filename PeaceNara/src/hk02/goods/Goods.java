@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 
+import hk02.market.Market;
+
 public class Goods {
 	private String title = ""; // 게시물 제목
 	ArrayList<String> content = new ArrayList<String>();
@@ -15,14 +17,6 @@ public class Goods {
 
 	private String seller = ""; // 판매자 (id or 이름)
 	private String cellPhone; // 전화번호 : 010-0000-0000
-
-	public String getCellPhone() {
-		return cellPhone;
-	}
-
-	public void setCellPhone(String cellPhone) {
-		this.cellPhone = cellPhone;
-	}
 
 	private String time = ""; // 게시 시간(yyyy/MM/DD)
 	private String time2 = ""; // 게시 시간(HH/mm/ss) 상세 게시물을 표시할 때 사용하거나
@@ -40,18 +34,17 @@ public class Goods {
 		this.stock = true; // 게시물이 생성되었다는 것은 판매중이라는 의미
 	}
 
-	public Goods(String title, String content, String company, int number, int price, String seller, String cellPhone,
+	public Goods(String title, String content, String company, int price, String seller, String cellPhone,
 			String time) {
-		
 		// 더미 데이터 입력을 위한 생성자
 		this.title = title;
 		this.content.add(content);
-		this.company= company;
-		this.number = number;
+		this.company = company;
+		this.number = Market.goodsList.size() + 1;
 		this.price = price;
 		this.seller = seller;
 		this.cellPhone = cellPhone;
-		this.time = time; 
+		this.time = time;
 		this.time2 = "00:00:00"; // 더미데이터의 time2는 따로 기록하지 않을 생각
 		this.stock = true;
 	}
@@ -104,6 +97,14 @@ public class Goods {
 		this.seller = seller;
 	}
 
+	public String getCellPhone() {
+		return cellPhone;
+	}
+
+	public void setCellPhone(String cellPhone) {
+		this.cellPhone = cellPhone;
+	}
+
 	public String getTime() {
 		return time;
 	}
@@ -119,29 +120,33 @@ public class Goods {
 	public void setStock(boolean stock) {
 		this.stock = stock;
 	}
-	
-	public String getStock(){
-		if(stock){
+
+	public String getStock() {
+		if (stock) {
 			return "판매중";
-		}else{
+		} else {
 			return "판매완료";
 		}
 	}
-	
+
 	public String getTime2() {
 		return time2;
 	}
 	
-	@Override 
+	@Override
 	public String toString() {
-		System.out.printf("%3d  %-7s\t",number,title);
-		if(title.length() < 6){
-			System.out.print("\t");	
-		}		
-		System.out.printf(" %d\t     %s\t",price,seller);
-
-		System.out.printf(" %s\t",time);
-		System.out.print(getStock());
+		System.out.printf("%3d  %.20s", number, title);
+		if(title.getBytes().length < 30){
+			for (int i = 0; i <= (30 - title.getBytes().length); i++){
+				System.out.print(" ");
+			}
+		}
+		System.out.printf("\t %d\t     %s\t", price, seller);
+		if(seller.getBytes().length < 10){
+			System.out.print("\t");
+		}
+		System.out.printf(" %s\t", time);
+		System.out.printf("%4s",getStock());
 		return "";
 	}
 

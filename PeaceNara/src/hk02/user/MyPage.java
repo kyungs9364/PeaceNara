@@ -2,6 +2,7 @@ package hk02.user;
 
 import java.util.Scanner;
 
+import hk02.goods.ReNumbering;
 import hk02.logSystem.Membership;
 import hk02.market.Market;
 
@@ -23,13 +24,13 @@ public class MyPage {
 	public boolean myPage(User user) {
 		int num = 0;
 		while(true) {
-			System.out.println("--My Page----------------------------------------------------------------------------------------------------------------");
+			System.out.println("--My Page-------------------------------------------------------------------------------------");
 			System.out.println("원하는 메뉴의 번호를 입력하세요.");
 			System.out.println("1. 내 정보 확인");
 			System.out.println("2. 비밀번호 변경");
 			System.out.println("3. 회원 탈퇴");
-			System.out.println("4. 종료");
-			System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+			System.out.println("4. 이전 메뉴");
+			System.out.println("----------------------------------------------------------------------------------------------");
 			num = InputCheck.input1234();
 			if(num == 1) {
 				user.printUserInfo(); // 내 정보 출력
@@ -41,9 +42,9 @@ public class MyPage {
 				memberOut(user);
 				return false;
 			} else {
-				System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+				System.out.println("----------------------------------------------------------------------------------------------");
 				System.out.println("My Page를 벗어납니다.");
-				System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+				System.out.println("----------------------------------------------------------------------------------------------");
 				return true; // 마이페이지 벗어나기
 			}
 		}
@@ -131,6 +132,9 @@ public class MyPage {
 			} else if (idx >= 0) {
 				removeGoodsInList(user);
 				Membership.userList.remove(idx);
+				ReNumbering rN = new ReNumbering();
+				rN.reNumbering();
+				
 				System.out.println(user.getId() + "님 탈퇴되었습니다.");
 				break;
 			}

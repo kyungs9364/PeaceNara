@@ -7,7 +7,6 @@ import java.util.Scanner;
 
 import hk02.market.Market;
 import hk02.user.InputCheck;
-import hk02.user.MyPage;
 import hk02.user.User;
 
 public class Membership {
@@ -15,8 +14,7 @@ public class Membership {
 	User user = new User();
 	public static List<User> userList = new ArrayList<>();
 	
-	public Membership() {
-		this.userList = new ArrayList<>();
+	public Membership() {		
 		
 	}
 
@@ -26,9 +24,9 @@ public class Membership {
 //		Login login = new Login(userList);
 
 		while (true) {
-			System.out.println("-------------------------------------------------------------------------------");
+			System.out.println("----------------------------------------------------------------------------------------------");
 			System.out.println("              1.로그인          2.회원가입         3.종료");
-			System.out.println("-------------------------------------------------------------------------------");
+			System.out.println("----------------------------------------------------------------------------------------------");
 			num = InputCheck.input123(); // MyPage의 유효성검사 가져다 씀.
 			System.out.println();
 			switch (num) {
@@ -49,7 +47,7 @@ public class Membership {
 
 	public void input() {
 		Scanner sc = new Scanner(System.in);
-		System.out.println("--회원가입--------------------------------------------------------------------");
+		System.out.println("--회원가입------------------------------------------------------------------------------------");
 		
 		String id = null; 
 		while (true) {

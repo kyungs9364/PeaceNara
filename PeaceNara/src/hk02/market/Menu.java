@@ -15,9 +15,9 @@ public class Menu {
 	public void marketMenuEvent(Market market, User user){
 		Scanner scan = new Scanner(System.in);
 		while (true) {
-			System.out.println("*-------------------------------------=PeaceNara=--------------------------------------*");
-			System.out.println("\t1.모든 물품정보\t2.물품사기\t3.물품판매\t4.MyPage\t5.Logout");
-			System.out.println("*--------------------------------------------------------------------------------------*");
+			System.out.println("*----------------------------------------=PeaceNara=-----------------------------------------*");
+			System.out.println("\t1.모든 물품정보     2.물품사기     3.물품판매     4.MyPage     5.Logout");
+			System.out.println("*--------------------------------------------------------------------------------------------*");
 			
 			System.out.println("\n>> 보고싶거나 하고싶은 번호를 입력해주세요.");
 			try {
@@ -53,9 +53,9 @@ public class Menu {
 	}
 	
 	public void buyMenu(Market market, User user){
-		System.out.println("-------------------------------------------------------------------------------");
-		System.out.println("\t1.구매하실 물품 번호 입력\t2.물품상세정보\t\t3.Main");
-		System.out.println("-------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------------");
+		System.out.println("\t1.구매하실 물품 번호 입력     2.물품상세정보     3.이전 메뉴");
+		System.out.println("----------------------------------------------------------------------------------------------");
 		buyMenuEvent(market,user);
 	}
 	
@@ -90,9 +90,9 @@ public class Menu {
 	public void goodsMenu(Market market,User user){
 		market.allGoodsListPrint();
 		
-		System.out.println("-------------------------------------------------------------------------------");
-		System.out.println("\t1.물품상세정보열람\t2.제조사검색\t3.Main");
-		System.out.println("-------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------------");
+		System.out.println("\t1.물품상세정보 열람     2.제조사 검색     3.이전 메뉴");
+		System.out.println("----------------------------------------------------------------------------------------------");
 
 		goodsMenuEvent(market,user);
 	}
@@ -124,9 +124,9 @@ public class Menu {
 	}
 	
 	public void goodsMenuDetailsBuy(Market market,User user,int num){
-		System.out.println("-------------------------------------------------------------------------------");
-		System.out.println("\t1.상품 바로구매\t2.취소");
-		System.out.println("-------------------------------------------------------------------------------");
+		System.out.println("----------------------------------------------------------------------------------------------");
+		System.out.println("\t1.물품 바로구매     2.취소");
+		System.out.println("----------------------------------------------------------------------------------------------");
 
 		goodsMenuDetailsBuyEvent(market,user,num);
 	}
