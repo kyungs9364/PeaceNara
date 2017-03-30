@@ -14,6 +14,15 @@ public class Goods {
 	private int price = 0; // 판매 물품 가격
 
 	private String seller = ""; // 판매자 (id or 이름)
+	private String cellPhone; // 전화번호 : 010-0000-0000
+
+	public String getCellPhone() {
+		return cellPhone;
+	}
+
+	public void setCellPhone(String cellPhone) {
+		this.cellPhone = cellPhone;
+	}
 
 	private String time = ""; // 게시 시간(yyyy/MM/DD)
 	private String time2 = ""; // 게시 시간(HH/mm/ss) 상세 게시물을 표시할 때 사용하거나
@@ -31,7 +40,7 @@ public class Goods {
 		this.stock = true; // 게시물이 생성되었다는 것은 판매중이라는 의미
 	}
 
-	public Goods(String title, String content, String company, int number, int price, String seller,
+	public Goods(String title, String content, String company, int number, int price, String seller, String cellPhone,
 			String time) {
 		
 		// 더미 데이터 입력을 위한 생성자
@@ -41,6 +50,7 @@ public class Goods {
 		this.number = number;
 		this.price = price;
 		this.seller = seller;
+		this.cellPhone = cellPhone;
 		this.time = time; 
 		this.time2 = "00:00:00"; // 더미데이터의 time2는 따로 기록하지 않을 생각
 		this.stock = true;
