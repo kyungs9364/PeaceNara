@@ -33,7 +33,7 @@ public class Market {
 	public void buyMenuOpen(User user) {
 		sellGoodsListPrint(user);
 		menu.buyMenu(this, user);
-
+ 
 	}
 	
 	public void searchGoods(User user){
