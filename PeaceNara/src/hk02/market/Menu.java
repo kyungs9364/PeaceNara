@@ -33,7 +33,9 @@ public class Menu {
 					market.sell(user);
 					break;
 				case 4:
-					page.myPage(user);
+					if(!(page.myPage(user))){
+						mbs.memberMenu(market);
+					}
 					break;
 				case 5:
 					System.out.println("->'"+user.getId() +"' 님은 로그아웃되셨습니다..\n"); 
@@ -89,7 +91,7 @@ public class Menu {
 		market.allGoodsListPrint();
 		
 		System.out.println("-------------------------------------------------------------------------------");
-		System.out.println("\t1.물품상세정보열람\t2.Main");
+		System.out.println("\t1.물품상세정보열람\t2.제조사검색\t3.Main");
 		System.out.println("-------------------------------------------------------------------------------");
 
 		goodsMenuEvent(market,user);
@@ -104,11 +106,13 @@ public class Menu {
 			case 1: 
 				market.allViewGoodsDetails(user);
 			case 2:
+				market.searchGoods(user);
+			case 3:
 				market.helloMarket(user);
 				break;
 
 			default:
-				System.out.println("번호는 1~2까지만 있습니다.. 다시입력해주세요.");
+				System.out.println("번호는 1~3까지만 있습니다.. 다시입력해주세요.");
 				goodsMenu(market,user);
 				break;
 			}

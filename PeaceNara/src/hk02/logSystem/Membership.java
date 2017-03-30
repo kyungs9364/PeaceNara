@@ -16,8 +16,8 @@ public class Membership {
 	public static List<User> userList = new ArrayList<>();
 	
 	public Membership() {
-		userList.add(new User("jhrrr", "a123123", "a123123", "010-1234-5678", 500000));
-		userList.add(new User("yksss", "b123123", "b123123", "010-1234-5678", 300000));
+		this.userList = new ArrayList<>();
+		
 	}
 
 	public void memberMenu(Market market) {
