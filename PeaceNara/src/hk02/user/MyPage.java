@@ -8,51 +8,56 @@ import java.util.Scanner;
 // 매개변수로 로그인한 유저 넣어줄 것.
 
 public class MyPage {
-	
+
 	public MyPage() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	// my page 메뉴
 	// 1. 내 정보 확인
 	// 2. 비밀번호 변경
 	// 3. 마이페이지 종료
 	public void myPage(User user) {
-		while(true) {
-			System.out.println("--My Page----------------------------------------------------------------------------------------------------------------");
+		while (true) {
+			System.out.println(
+					"--My Page----------------------------------------------------------------------------------------------------------------");
 			System.out.println("원하는 메뉴의 번호를 입력하세요.");
 			System.out.println("1. 내 정보 확인");
 			System.out.println("2. 비밀번호 변경");
+			System.out.println("4. 회원 탈퇴");
 			System.out.println("3. 종료");
-			System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+			System.out.println(
+					"---------------------------------------------------------------------------------------------------------------------------");
 			int num = input123();
-			if(num == 1){
+			if (num == 1) {
 				user.printUserInfo(); // 내 정보 출력
 				continue;
-			} else if(num == 2){
+			} else if (num == 2) {
 				updatePw(user); // 비밀번호 변경
 				continue;
 			} else {
-				System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+				System.out.println(
+						"---------------------------------------------------------------------------------------------------------------------------");
 				System.out.println("My Page를 벗어납니다.");
-				System.out.println("---------------------------------------------------------------------------------------------------------------------------");
+				System.out.println(
+						"---------------------------------------------------------------------------------------------------------------------------");
 				break; // 마이페이지 벗어나기
 			}
 		}
 	}
-	
+
 	// Scanner로 String으로 입력받아서 int반환 (유효성검사: 1, 2, 3)
-	public int input123(){
+	public int input123() {
 		Scanner scan = new Scanner(System.in);
 		String tmp = null;
 		int result = 0;
-		while(true) {
+		while (true) {
 			System.out.print(">");
 			tmp = scan.next().trim();
-			if(tmp.matches("[123]")){
+			if (tmp.matches("[123]")) {
 				result = Integer.parseInt(tmp);
 				break;
-			}else{
+			} else {
 				System.out.println("잘못 입력하셨습니다.");
 				System.out.println("원하는 메뉴의 번호를 입력해주세요.");
 				continue;
@@ -60,63 +65,61 @@ public class MyPage {
 		}
 		return result;
 	}
-	
+
 	// 비밀번호 수정 (ID, 잔액은 수정 불가)
-	public void updatePw(User user){
+	public void updatePw(User user) {
 		System.out.println("비밀번호를 수정합니다.");
-		if(checkPw(user)){
+		if (checkPw(user)) {
 			inputNewPw(user);
 		}
 	}
-	
+
 	// 새 비밀번호 입력
-	public void inputNewPw(User user){
+	public void inputNewPw(User user) {
 		Scanner scan = new Scanner(System.in);
 		String pw1 = "";
 		String pw2 = "";
-		while(true) {
+		while (true) {
 			System.out.println("새로운 비밀번호를 입력해주세요.");
 			System.out.print(">");
 			pw1 = scan.nextLine().trim();
-			
+
 			System.out.println("다시 한 번 입력해주세요.");
 			System.out.print(">");
 			pw2 = scan.nextLine().trim();
-			
-			if(pw1.equals(pw2)){ // 입력한 두 개의 비밀번호가 같으면
+
+			if (pw1.equals(pw2)) { // 입력한 두 개의 비밀번호가 같으면
 				user.setPw(pw1);
 				System.out.println("비밀번호를 변경했습니다.");
 				return;
-			}else{
+			} else {
 				System.out.println("입력한 두 비밀번호가 다릅니다.");
 				System.out.println("처음부터 다시 입력합니다.");
 				continue;
 			}
 		}
 	}
-	
+
 	// 비밀번호 변경 전에 이전 비밀번호 확인
-	public boolean checkPw(User user){
+	public boolean checkPw(User user) {
 		// 비밀번호 5회 이상 틀리면 변경안되는 기능 추가 고려
 		System.out.println("이전 비밀번호를 입력하세요.");
-		
+
 		Scanner scan = new Scanner(System.in);
 		String tmp = null;
-		
-		while(true) {
+
+		while (true) {
 			System.out.print(">");
 			tmp = scan.nextLine().trim(); // 비밀번호 입력
-			
-			if(tmp.equals(user.getPw())){ 
+
+			if (tmp.equals(user.getPw())) {
 				System.out.println("입력한 비밀번호가 맞습니다.");
 				return true; // 입력한 비번이 맞으면 true 반환
 			}
-			
+
 			System.out.println("입력한 비밀번호가 맞지 않습니다.");
 			System.out.println("다시 입력해주세요.");
 		}
 	}
-	
 
-	
 }

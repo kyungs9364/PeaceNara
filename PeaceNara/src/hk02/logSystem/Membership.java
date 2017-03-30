@@ -8,12 +8,9 @@ import java.util.Scanner;
 import hk02.user.User;
 
 public class Membership {
-	Scanner sc = new Scanner(System.in);
-	int num = 0;
 
 	User user = new User();
-	List<User> userList;
-	Login login;
+	public static List<User> userList;
 
 	public Membership() {
 		this.userList = new ArrayList<>();
@@ -22,21 +19,23 @@ public class Membership {
 	}
 
 	public void memberMenu() {
+		int num = 0;
+		Scanner sc = new Scanner(System.in);
 
 		while (true) {
 			System.out.println("-------------------");
 			System.out.println("1.로그인    2.회원가입");
 			System.out.println("-------------------");
-			try {
+			try { 
 				num = sc.nextInt();
-				login = new Login(userList);
+				Login login = new Login(userList);
 				switch (num) {
 				case 1:
 					login.login();
+					login.memberOut();
 					break;
 				case 2:
 					input();
-					list(userList);
 					login.login();
 					break;
 
@@ -56,6 +55,8 @@ public class Membership {
 	}
 
 	public void input() {
+		Scanner sc = new Scanner(System.in);
+		
 		System.out.println("---------회원가입---------");
 		while (true) {
 			System.out.print("아이디 : ");
@@ -134,12 +135,6 @@ public class Membership {
 				continue;
 			}
 			break;
-		}
-	}
-
-	public void list(List<User> userList) {
-		for (int i = 0; i < userList.size(); i++) {
-			System.out.println(userList.get(i).toString());
 		}
 	}
 }

@@ -16,10 +16,10 @@ public class Market {
 	public Market() { // 마켓 생성시 더미 항목들 입력.
 		int cnt = 1;
 		goodsList = new ArrayList<Goods>(); // 총 상품리스트
-		goodsList.add(new Goods("V20", "가개통", "LG-F800K", "LG", cnt++, 500000, "skd", "2017/03/23"));
-		goodsList.add(new Goods("갤럭시 S7", "6개월 사용", "SM-G930S", "삼성", cnt++, 450000, "ksw", "2017/03/20"));
-		goodsList.add(new Goods("G5", "1년 사용", "G5", "LG-F700S", cnt++, 300000, "skd", "2017/03/19"));
-		goodsList.add(new Goods("iphone 7", "3개월 사용", "iPhone 7", "Apple", cnt++, 600000, "skd", "2017/03/23"));
+		goodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd", "2017/03/23"));
+		goodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw", "2017/03/20"));
+		goodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd", "2017/03/19"));
+		goodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd", "2017/03/23"));
 
 	}
 
@@ -122,13 +122,14 @@ public class Market {
 		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
 												// 삭제시키기위함.
 		ArrayList<String> textTmp = new ArrayList<String>();
-		int cnt = 0;
+		int cnt = 0;  // 내용입력도우미 변수
+		int num =0; // 제품사 입력 변수.
+		
 		goodsList.add(new Goods());
-
-		System.out.println("--------------------------------------");
+		System.out.println("----------------------------------------------------------------------------");
 		System.out.println("* 제목을 입력해주세요.");
 		String input = scan.nextLine();
-		System.out.println("======================================");
+		System.out.println("============================================================================");
 		goodsList.get(goodsList.size() - 1).setTitle(input);
 
 		System.out.println("* 내용을 입력해 주세요");
@@ -171,19 +172,49 @@ public class Market {
 			cnt++;
 		}
 		goodsList.get(goodsList.size() - 1).setContent(textTmp);
-
-		System.out.println("모델명을 입력해주세요.");
-		input = scan.nextLine();
-		goodsList.get(goodsList.size() - 1).setModel(input);
-
+		
+		while (true) {
+			System.out.println("판매하실 기기의 제조사를 선택해주세요.");
+			System.out.println("1. 삼성 / 2. Apple / 3. LG / 4. 팬택 / 5. Sony / 6. 이외 기타 제조사");
+			try {
+				num = scan.nextInt();
+				if(num == 1){
+					goodsList.get(4).setCompany("삼성");
+					break;
+				}else if(num == 2){
+					goodsList.get(4).setCompany("Apple");
+					break;
+				}else if(num == 3){
+					goodsList.get(4).setCompany("LG");
+					break;
+				}else if(num == 4){
+					goodsList.get(4).setCompany("팬택");
+					break;
+				}else if(num == 5){
+					goodsList.get(4).setCompany("Sony");
+					break;
+				}else if(num == 6){
+					goodsList.get(4).setCompany("기타");
+					break;
+				}else{
+					System.out.println("표시된 범위 내에서 선택해주세요.");
+				}
+			} catch (InputMismatchException e) {
+				// TODO: handle exception
+				System.out.println("번호로 선택해주세요.");	
+				scan.nextLine();					
+			}
+		}		
+		
 		goodsList.get(goodsList.size() - 1).setNumber(goodsList.size());
 
 		while (true) {
 			try {
-				System.out.println("--------------------------------------");
+				System.out.println("----------------------------------------------------------------------------");
 				System.out.println("* 가격을 입력해주세요.");
+				scan.nextLine();  // 다음입력을 위해 커서이동.
 				input = scan.nextLine();
-				System.out.println("======================================");
+				System.out.println("============================================================================\n");
 				goodsList.get(goodsList.size() - 1).setPrice(Integer.parseInt(input));
 				break;
 			} catch (NumberFormatException e) {
@@ -197,36 +228,36 @@ public class Market {
 	}
 
 	public void allGoodsListPrint() {
-		System.out.println("--물품 목록-----------------------------------------------------------------");
-		System.out.println(" 번호  게시글명     가격   판매자     날짜         상태");
-		System.out.println("============================================================================");
+		System.out.println("--물품 목록--------------------------------------------------------------------");
+		System.out.println(" No\t게시글명\t  가격\t    판매자\t\t   날짜\t\t 상태");
+		System.out.println("===============================================================================");
 		for (int i = goodsList.size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글
 															// 순.)
 			System.out.println(goodsList.get(i));
 		}
-		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
 
 	}
 
 	public void sellGoodsListPrint(User user) {
-		System.out.println("--물품 목록-----------------------------------------------------------------");
-		System.out.println(" 번호  게시글명     가격   판매자     날짜         상태");
-		System.out.println("============================================================================");
+		System.out.println("--물품 목록--------------------------------------------------------------------");
+		System.out.println(" No\t게시글명\t  가격\t    판매자\t\t   날짜\t\t 상태");
+		System.out.println("===============================================================================");
 		for (int i = goodsList.size() - 1; i >= 0; i--) { // 역순으로 게시글을 보이게함.(최신글
 															// 순.)
 			if (goodsList.get(i).getStock().equals("판매중")) {
 				System.out.println(goodsList.get(i));
 			}
 		}
-		System.out.println("----------------------------------------------------------------------------");
-		System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++\t소지한 금액 : "+user.getBalance()+" 원");
-		System.out.println("----------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
+		System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++\t소지한 금액 : "+user.getBalance()+" 원");
+		System.out.println("-------------------------------------------------------------------------------");
 	}
 
 	public void viewGoodsDetails(User user) {
 		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
 												// 삭제시키기위함.
-		System.out.println("--판매중인 물품의 상세정보를 보실 물품번호를 입력해주세요.-------------------------------");
+		System.out.println("--판매중인 물품의 상세정보를 보실 물품번호를 입력해주세요.------------------------------------");
 
 		try {
 			int goodsNum = scan.nextInt();
@@ -256,12 +287,13 @@ public class Market {
 	public void allViewGoodsDetails(User user) {
 		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
 												// 삭제시키기위함.
-		System.out.println("--상세정보를 보실 물품번호를 입력해주세요.-------------------------------");
+		System.out.println("--상세정보를 보실 물품번호를 입력해주세요.--------------------------------------");
+
 
 		try {
 			int goodsNum = scan.nextInt();
 			vg.viewGoods(goodsList.get(goodsNum - 1));
-			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++\t소지한 금액 : "+user.getBalance()+" 원");
+			System.out.println("+++++++++++++++++++++++++++++++++++++++++++++++++++++\t소지한 금액 : "+user.getBalance()+" 원");
 			menu.goodsMenuDetailsBuy(this, user, goodsNum-1);
 
 		} catch (InputMismatchException e) {

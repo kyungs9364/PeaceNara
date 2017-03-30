@@ -10,7 +10,6 @@ public class Goods {
 	// private String content = ""; // 게시물 내용
 	private int number = 0; // 게시물 번호
 
-	private String model = ""; // 판매 물품 모델명
 	private String company = ""; // 판매 물품 제조사명
 	private int price = 0; // 판매 물품 가격
 
@@ -32,7 +31,7 @@ public class Goods {
 		this.stock = true; // 게시물이 생성되었다는 것은 판매중이라는 의미
 	}
 
-	public Goods(String title, String content, String model, String company, int number, int price, String seller,
+	public Goods(String title, String content, String company, int number, int price, String seller,
 			String time) {
 		
 		// 더미 데이터 입력을 위한 생성자
@@ -68,14 +67,6 @@ public class Goods {
 
 	public void setNumber(int number) {
 		this.number = number;
-	}
-
-	public String getModel() {
-		return model;
-	}
-
-	public void setModel(String model) {
-		this.model = model;
 	}
 
 	public String getCompany() {
@@ -133,9 +124,17 @@ public class Goods {
 	@Override 
 	public String toString() {		
 //		System.out.println(" NO   제목\t 가격\t 판매자\t등록일\t상태");  출력 상단 바
-		System.out.printf("%3d  %-7s\t %d\t %s\t %s\t",number,title,price,seller,time);
+		System.out.printf("%3d  %-7s\t",number,title);
+		if(title.length() < 6){
+			System.out.print("\t");	
+		}		
+		System.out.printf(" %d\t     %s\t",price,seller);
+		if(seller.length() < 6){
+			System.out.print("\t");	
+		}
+		System.out.printf(" %s\t",time);
 		System.out.print(getStock());
 		return "";
-	}	
+	}
 
 }
