@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 import hk02.goods.Goods;
 import hk02.goods.ViewGoods;
+import hk02.logSystem.Membership;
 import hk02.user.User;
 
 public class Market {
@@ -15,10 +16,10 @@ public class Market {
 
 	public Market() { // 마켓 생성시 더미 항목들 입력.
 		int cnt = 1;
-//		goodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd", "2017/03/23"));
-//		goodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw", "2017/03/20"));
-//		goodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd", "2017/03/19"));
-//		goodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd", "2017/03/23"));
+		goodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd123", "2017/03/23"));
+		goodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw123", "2017/03/20"));
+		goodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd123", "2017/03/19"));
+		goodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd123", "2017/03/23"));
 
 	}
 
@@ -35,12 +36,9 @@ public class Market {
 	}
 
 	public void buy(User user) {
-		// user 객체로 buylist를 불러온다.
-		// 현재 임시로 user 객체를 생성
 
 		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
 												// 삭제시키기위함.
-		// User user = new User("kyungss", "1234", 1000000);
 
 		while (true) {
 			try {
@@ -67,6 +65,13 @@ public class Market {
 				}
 
 				System.out.println("소지하신 금액은 " + user.getBalance() + " 원 입니다.\n");
+				
+				for (int i = 0; i < Membership.userList.size(); i++) {
+					if(goodsList.get(goodsNum-1).getSeller().equals(Membership.userList.get(i).getId())){
+						Membership.userList.get(i).setBalance(Membership.userList.get(i).getBalance() +goodsList.get(goodsNum-1).getPrice());
+					}
+				} // 판매가 되면 판매자에게 돈을 준다.
+				
 				scan.nextLine(); // 다음 scanner 사용을 위해 다음커서 이동
 
 			} catch (InputMismatchException e) {
@@ -103,6 +108,12 @@ public class Market {
 			user.setBuyGoodsList(goodsList, (goodsNum));
 			goodsList.get(goodsNum).setStock(false);
 			System.out.println("구매해주셔서 감사합니다.");
+			
+			for (int i = 0; i < Membership.userList.size(); i++) {
+				if(goodsList.get(goodsNum).getSeller().equals(Membership.userList.get(i).getId())){
+					Membership.userList.get(i).setBalance(Membership.userList.get(i).getBalance() +goodsList.get(goodsNum).getPrice());
+				}
+			} // 판매가 되면 판매자에게 돈을 준다.
 
 		} else if (goodsList.get(goodsNum).getStock().equals("판매완료")) {
 			System.out.println("판매가 완료된 제품입니다.\n");
@@ -206,19 +217,19 @@ public class Market {
 		}		
 		
 		goodsList.get(goodsList.size() - 1).setNumber(goodsList.size());
-
+		scan.nextLine();  // 다음입력을 위해 커서이동.
+		
 		while (true) {
 			try {
 				System.out.println("----------------------------------------------------------------------------");
 				System.out.println("* 가격을 입력해주세요.");
-				scan.nextLine();  // 다음입력을 위해 커서이동.
 				input = scan.nextLine();
 				System.out.println("============================================================================\n");
 				goodsList.get(goodsList.size() - 1).setPrice(Integer.parseInt(input));
 				break;
 			} catch (NumberFormatException e) {
 				// TODO: handle exception
-				System.out.println("\n!- 숫자로 입력해주세요.\n");
+				System.out.println("!- 숫자로 입력해주세요.\n");
 			}
 		}
 		goodsList.get(goodsList.size() - 1).setSeller(user.getId());
@@ -263,7 +274,7 @@ public class Market {
 			if (goodsList.get(goodsNum - 1).getStock().equals("판매완료")) {
 				System.out.println("판매가 되어 정보를 열람할수 없는 번호입니다.");
 				System.out.println("정보를 열람하시려면 모든 물품정보 항목으로 들어가주세요.\n");
-				viewGoodsDetails(user);
+				menu.buyMenu(this, user);
 			}
 			vg.viewGoods(goodsList.get(goodsNum - 1));
 			menu.buyMenu(this, user);
@@ -273,8 +284,8 @@ public class Market {
 			System.out.println("숫자만 입력해주세요.\n");
 			viewGoodsDetails(user);
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println("\n물품의 정보가 존재하지 않습니다.. 다시 입력해주세요-\n");
-			viewGoodsDetails(user);
+			System.out.println("\n물품의 정보가 존재하지 않습니다.. 돌아갑니다.-\n");
+			menu.buyMenu(this, user);
 		}
 
 		catch (Exception e) {
@@ -300,8 +311,8 @@ public class Market {
 			System.out.println("숫자만 입력해주세요.\n");
 			allViewGoodsDetails(user);
 		} catch (IndexOutOfBoundsException e) {
-			System.out.println("\n물품의 정보가 존재하지 않습니다.. 다시 입력해주세요-\n");
-			allViewGoodsDetails(user);
+			System.out.println("\n물품의 정보가 존재하지 않습니다.. 돌아갑니다.-\n"); // 물품이 없을 경우를 대비.
+			menu.goodsMenu(this, user);
 		}
 
 		catch (Exception e) {

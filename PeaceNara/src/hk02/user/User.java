@@ -12,8 +12,8 @@ public class User {
 	private String pwCheck; // PasswordCheck
 	private String cellPhone; // 전화번호 : 010-0000-0000
 	private int balance; // 잔액 : 123456원
-	private ArrayList<Goods> buyGoodsList; // 자신이 구매한 리스트
-	private ArrayList<Goods> sellGoodsList; // 팔려고 업로드한 상품 리스트
+	private ArrayList<Goods> buyGoodsList; // 구매내역
+	private ArrayList<Goods> sellGoodsList; // 판매내역
 
 	// 더미
 	public User() {
@@ -77,8 +77,8 @@ public class User {
 	
 	// Market클래스에서 가져왔음.
 	public void printSellList() {
-		System.out.println(
-				"--판매중인 물품------------------------------------------------------------------");
+		System.out.println("--판매 내역--------------------------------------------------------------------");
+
 		System.out.println(" No\t게시글명\t  가격\t    판매자\t\t   날짜\t\t 상태");
 		System.out.println("===============================================================================");
 		for (int i = getSellGoodsList().size() - 1; i >= 0; i--) { // 역순으로 게시글을

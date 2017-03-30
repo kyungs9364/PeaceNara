@@ -18,6 +18,7 @@ public class MyPage {
 	// 2. 비밀번호 변경
 	// 3. 마이페이지 종료
 	public void myPage(User user) {
+		int num = 0;
 		while(true) {
 			System.out.println("--My Page----------------------------------------------------------------------------------------------------------------");
 			System.out.println("원하는 메뉴의 번호를 입력하세요.");
@@ -25,13 +26,15 @@ public class MyPage {
 			System.out.println("2. 비밀번호 변경");
 			System.out.println("3. 종료");
 			System.out.println("---------------------------------------------------------------------------------------------------------------------------");
-			int num = input123();
-			if(num == 1){
+			num = InputCheck.input1234();
+			if(num == 1) {
 				user.printUserInfo(); // 내 정보 출력
 				continue;
-			} else if(num == 2){
+			} else if(num == 2) {
 				updatePw(user); // 비밀번호 변경
 				continue;
+//			} else if(num == 3) {
+				
 			} else {
 				System.out.println("---------------------------------------------------------------------------------------------------------------------------");
 				System.out.println("My Page를 벗어납니다.");
@@ -39,26 +42,6 @@ public class MyPage {
 				break; // 마이페이지 벗어나기
 			}
 		}
-	}
-	
-	// Scanner로 String으로 입력받아서 int반환 (유효성검사: 1, 2, 3)
-	public int input123(){
-		Scanner scan = new Scanner(System.in);
-		String tmp = null;
-		int result = 0;
-		while(true) {
-			System.out.print(">");
-			tmp = scan.next().trim();
-			if(tmp.matches("[123]")){
-				result = Integer.parseInt(tmp);
-				break;
-			}else{
-				System.out.println("잘못 입력하셨습니다.");
-				System.out.println("원하는 메뉴의 번호를 입력해주세요.");
-				continue;
-			}
-		}
-		return result;
 	}
 	
 	// 비밀번호 수정 (ID, 잔액은 수정 불가)
@@ -76,11 +59,11 @@ public class MyPage {
 		String pw2 = "";
 		while(true) {
 			System.out.println("새로운 비밀번호를 입력해주세요.");
-			System.out.print(">");
+			System.out.print("> ");
 			pw1 = scan.nextLine().trim();
 			
 			System.out.println("다시 한 번 입력해주세요.");
-			System.out.print(">");
+			System.out.print("> ");
 			pw2 = scan.nextLine().trim();
 			
 			if(pw1.equals(pw2)){ // 입력한 두 개의 비밀번호가 같으면
@@ -104,7 +87,7 @@ public class MyPage {
 		String tmp = null;
 		
 		while(true) {
-			System.out.print(">");
+			System.out.print("> ");
 			tmp = scan.nextLine().trim(); // 비밀번호 입력
 			
 			if(tmp.equals(user.getPw())){ 
