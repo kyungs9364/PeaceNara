@@ -297,8 +297,8 @@ public class Market {
 				System.out.println("!- 숫자로 입력해주세요.\n");
 			}
 		}
-		goodsList.get(goodsList.size() - 1).setSeller(user.getId());
-		goodsList.get(goodsList.size() - 1).setCellPhone(user.getCellPhone());
+		goodsList.get(goodsList.size() - 1).setSeller(user.getId());  // 아이디 입력
+		goodsList.get(goodsList.size() - 1).setCellPhone(user.getCellPhone()); // 핸드폰번호 입력
 		user.setSellGoodsList(goodsList, goodsList.size() - 1);
 
 	}
