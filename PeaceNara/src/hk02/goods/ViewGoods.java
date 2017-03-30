@@ -1,7 +1,7 @@
 package hk02.goods;
 
 public class ViewGoods {
-	public void viewGoods(Goods goods) {
+	public void viewGoods(Goods goods) { 
 		System.out.println("----------------------------------------------------------------------------");
 		System.out.println(" 물품번호 : " + goods.getNumber());
 		System.out.println(" 제    목 : " + goods.getTitle());
