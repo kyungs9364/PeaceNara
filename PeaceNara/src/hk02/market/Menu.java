@@ -3,13 +3,16 @@ package hk02.market;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import hk02.logSystem.Membership;
 import hk02.user.MyPage;
 import hk02.user.User;
 
 public class Menu {
 	MyPage page = new MyPage();
-
-	public void marketMenuEvent(Market market, User user) {
+	Membership mbs = new Membership();  // 여기서 한번 더 객체를 생성하는데 괜찮은지 생각해보기.
+	
+	
+	public void marketMenuEvent(Market market, User user){
 		Scanner scan = new Scanner(System.in);
 		while (true) {
 			System.out.println(
@@ -32,11 +35,13 @@ public class Menu {
 					market.sell(user);
 					break;
 				case 4:
-					page.myPage(user);
+					if(!(page.myPage(user))){
+						mbs.memberMenu(market);
+					}
 					break;
 				case 5:
-					// logout();
-					System.out.println("미구현");
+					System.out.println("->'"+user.getId() +"' 님은 로그아웃되셨습니다..\n"); 
+					mbs.memberMenu(market);
 					break;
 				default:
 					System.out.println("번호는 1~5까지만 있습니다.. 다시입력해주세요.");
@@ -48,17 +53,12 @@ public class Menu {
 			}
 		}
 	}
-
-	// public void buyMenu(Market market, User user) {
-	// System.out.println("------------------------------------------------------------------------------");
-
-	public void buyMenu(Market market, User user) {
+	
+	public void buyMenu(Market market, User user){
 		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("\t1.구매하실 물품 번호 입력\t2.물품상세정보\t\t3.Main");
-		System.out.println("------------------------------------------------------------------------------");
-		buyMenuEvent(market, user);
 		System.out.println("-------------------------------------------------------------------------------");
-		buyMenuEvent(market, user);
+		buyMenuEvent(market,user);
 	}
 
 	public void buyMenuEvent(Market market, User user) {
@@ -90,12 +90,11 @@ public class Menu {
 	}
 
 	public void goodsMenu(Market market, User user) {
-		market.allGoodsListPrint();
-
-		System.out.println("------------------------------------------------------------------------");
-
+		market.allGoodsListPrint();	
 		System.out.println("-------------------------------------------------------------------------------");
-
+		System.out.println("\t1.물품상세정보열람\t2.제조사검색\t3.Main");
+		System.out.println("-------------------------------------------------------------------------------");
+		System.out.println("-------------------------------------------------------------------------------");
 		System.out.println("\t1.물품상세정보열람\t2.Main");
 		System.out.println("-------------------------------------------------------------------------------");
 
@@ -111,12 +110,14 @@ public class Menu {
 			case 1:
 				market.allViewGoodsDetails(user);
 			case 2:
+				market.searchGoods(user);
+			case 3:
 				market.helloMarket(user);
 				break;
 
 			default:
-				System.out.println("번호는 1~2까지만 있습니다.. 다시입력해주세요.");
-				goodsMenu(market, user);
+				System.out.println("번호는 1~3까지만 있습니다.. 다시입력해주세요.");
+				goodsMenu(market,user);
 				break;
 			}
 		} catch (InputMismatchException e) {
@@ -125,9 +126,6 @@ public class Menu {
 			market.buy(user);
 		}
 	}
-
-	// public void goodsMenuDetailsBuy(Market market, User user, int num) {
-	// System.out.println("------------------------------------------------------------------------");
 
 	public void goodsMenuDetailsBuy(Market market, User user, int num) {
 		System.out.println("-------------------------------------------------------------------------------");

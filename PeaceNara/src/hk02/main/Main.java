@@ -7,11 +7,10 @@ public class Main {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		// Market market = new Market();
-		// market.helloMarket();
-		Membership mbs = new Membership();
-		mbs.memberMenu();
 
+		Market market = new Market();
+		Membership mbs = new Membership();
+		mbs.memberMenu(market);
 	}
 
 }

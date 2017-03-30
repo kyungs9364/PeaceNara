@@ -12,8 +12,8 @@ public class User {
 	private String pwCheck; // PasswordCheck
 	private String cellPhone; // 전화번호 : 010-0000-0000
 	private int balance; // 잔액 : 123456원
-	private ArrayList<Goods> buyGoodsList; // 자신이 구매한 리스트
-	private ArrayList<Goods> sellGoodsList; // 팔려고 업로드한 상품 리스트
+	private ArrayList<Goods> buyGoodsList; // 구매내역
+	private ArrayList<Goods> sellGoodsList; // 판매내역
 
 	// 더미
 	public User() {
@@ -23,17 +23,21 @@ public class User {
 		this.balance = 305000;
 		this.buyGoodsList = new ArrayList<Goods>();
 		this.sellGoodsList = new ArrayList<Goods>();
-		buyGoodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd", "2017/03/23"));
-		buyGoodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw", "2017/03/20"));
-		buyGoodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd", "2017/03/19"));
-		buyGoodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd", "2017/03/23"));
+		
+		buyGoodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd","010-1235-1234", "2017/03/23"));
+		buyGoodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw","010-5678-4321", "2017/03/20"));
+		buyGoodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd","010-2785-4362", "2017/03/19"));
+		buyGoodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd","010-1004-1004", "2017/03/23"));
+
 		for (int i = 0; i < buyGoodsList.size(); i++) {
 			buyGoodsList.get(i).setStock(false);
 		}
-		sellGoodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd", "2017/03/23"));
-		sellGoodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw", "2017/03/20"));
-		sellGoodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd", "2017/03/19"));
-		sellGoodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd", "2017/03/23"));
+
+		sellGoodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd","010-1235-1234", "2017/03/23"));
+		sellGoodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw","010-5678-4321", "2017/03/20"));
+		sellGoodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd","010-2785-4362", "2017/03/19"));
+		sellGoodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd","010-1004-1004", "2017/03/23"));
+
 	}
 
 	// 이 생성자는 삭제 예정
@@ -77,8 +81,8 @@ public class User {
 	
 	// Market클래스에서 가져왔음.
 	public void printSellList() {
-		System.out.println(
-				"--판매중인 물품------------------------------------------------------------------");
+
+		System.out.println("--판매 내역--------------------------------------------------------------------");
 		System.out.println(" No\t게시글명\t  가격\t    판매자\t\t   날짜\t\t 상태");
 		System.out.println("===============================================================================");
 		for (int i = getSellGoodsList().size() - 1; i >= 0; i--) { // 역순으로 게시글을
