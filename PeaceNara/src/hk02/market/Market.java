@@ -57,37 +57,37 @@ public class Market {
 						System.out.println(goodsList.get(i));
 					}
 				}
-			}else if(num == 2){
+			} else if(num == 2){
 				for (int i = 0; i < goodsList.size(); i++) {
 					if ("Apple".equals(goodsList.get(i).getCompany())) {  // 제조사가 같으면.
 						System.out.println(goodsList.get(i));
 					}
 				}
-			}else if(num == 3){
+			} else if(num == 3){
 				for (int i = 0; i < goodsList.size(); i++) {
 					if ("LG".equals(goodsList.get(i).getCompany())) {  // 제조사가 같으면.
 						System.out.println(goodsList.get(i));
 					}
 				}
-			}else if(num == 4){
+			} else if(num == 4){
 				for (int i = 0; i < goodsList.size(); i++) {
 					if ("팬택".equals(goodsList.get(i).getCompany())) {  // 제조사가 같으면.
 						System.out.println(goodsList.get(i));
 					}
 				}
-			}else if(num == 5){
+			} else if(num == 5){
 				for (int i = 0; i < goodsList.size(); i++) {
 					if ("Sony".equals(goodsList.get(i).getCompany())) {  // 제조사가 같으면.
 						System.out.println(goodsList.get(i));
 					}
 				}
-			}else if(num == 6){
+			} else if(num == 6){
 				for (int i = 0; i < goodsList.size(); i++) {
 					if ("기타".equals(goodsList.get(i).getCompany())) {  // 제조사가 같으면.
 						System.out.println(goodsList.get(i));
 					}
 				}
-			}else{
+			} else{
 				System.out.println("표시된 범위 내에서 선택해주세요.");
 			}
 		} catch (InputMismatchException e) {
