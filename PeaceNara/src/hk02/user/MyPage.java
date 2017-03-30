@@ -2,6 +2,8 @@ package hk02.user;
 
 import java.util.Scanner;
 
+import hk02.logSystem.Membership;
+
 // 사용법
 // MyPage myPage = new MyPage();
 // myPage.myPage(user);
@@ -17,14 +19,17 @@ public class MyPage {
 	// 1. 내 정보 확인
 	// 2. 비밀번호 변경
 	// 3. 마이페이지 종료
-	public void myPage(User user) {
+
+	public boolean myPage(User user) {
+
 		int num = 0;
 		while(true) {
 			System.out.println("--My Page----------------------------------------------------------------------------------------------------------------");
 			System.out.println("원하는 메뉴의 번호를 입력하세요.");
 			System.out.println("1. 내 정보 확인");
 			System.out.println("2. 비밀번호 변경");
-			System.out.println("3. 종료");
+			System.out.println("3. 회원 탈퇴");
+			System.out.println("4. 종료");
 			System.out.println("---------------------------------------------------------------------------------------------------------------------------");
 			num = InputCheck.input1234();
 			if(num == 1) {
@@ -33,13 +38,14 @@ public class MyPage {
 			} else if(num == 2) {
 				updatePw(user); // 비밀번호 변경
 				continue;
-//			} else if(num == 3) {
-				
+			} else if(num == 3) {
+				memberOut(user);
+				return false;
 			} else {
 				System.out.println("---------------------------------------------------------------------------------------------------------------------------");
 				System.out.println("My Page를 벗어납니다.");
 				System.out.println("---------------------------------------------------------------------------------------------------------------------------");
-				break; // 마이페이지 벗어나기
+				return true; // 마이페이지 벗어나기
 			}
 		}
 	}
@@ -100,6 +106,41 @@ public class MyPage {
 		}
 	}
 	
-
+	// 회원 탈퇴
+	public void memberOut(User user) {
+		Scanner sc = new Scanner(System.in);
+		int num = 0;
+		String inputPw = null;
+		while (true) {
+			System.out.println("1.회원탈퇴");
+			num = sc.nextInt();
+			if (num == 1) {
+				System.out.print("비밀번호 입력 : ");
+				inputPw = sc.next();
+				if (!(inputPw.equals(user.getPw()))) {
+					System.out.println("비밀번호를 확인해주세요.");
+					continue;
+				}
+				int idx = 0;
+				for (int i = 0; i < Membership.userList.size(); i++) {
+					if (user.getId().equals(Membership.userList.get(i).getId()) && user.getPw().equals(Membership.userList.get(i).getPw())) {
+						break;
+					} else {
+						idx++;
+					}
+				}
+				if (idx >= Membership.userList.size()) {
+					System.out.println("일치하는 회원이 없습니다.");
+				} else if (idx >= 0) {
+					Membership.userList.remove(idx);
+					System.out.println(user.getId() + "님 탈퇴되었습니다.");
+					break;
+				}
+			} else {
+				System.out.println("다시 입력하세요");
+				continue;
+			}
+		}
+	}
 	
 }
