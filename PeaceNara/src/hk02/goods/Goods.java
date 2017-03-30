@@ -37,6 +37,7 @@ public class Goods {
 		// 더미 데이터 입력을 위한 생성자
 		this.title = title;
 		this.content.add(content);
+		this.company= company;
 		this.number = number;
 		this.price = price;
 		this.seller = seller;

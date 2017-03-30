@@ -4,7 +4,7 @@ import java.util.Scanner;
 import hk02.market.Market;
 
 public class Login {
-
+	int num = 0;
 	String loginId = "";
 	String loginPw = "";
 	Scanner sc = new Scanner(System.in);
@@ -46,6 +46,4 @@ public class Login {
 			}
 		}
 	}
-
-
 }

@@ -19,7 +19,9 @@ public class MyPage {
 	// 1. 내 정보 확인
 	// 2. 비밀번호 변경
 	// 3. 마이페이지 종료
+
 	public boolean myPage(User user) {
+
 		int num = 0;
 		while(true) {
 			System.out.println("--My Page----------------------------------------------------------------------------------------------------------------");

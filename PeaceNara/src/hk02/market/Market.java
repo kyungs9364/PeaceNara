@@ -10,7 +10,7 @@ import hk02.logSystem.Membership;
 import hk02.user.User;
 
 public class Market {
-	private static ArrayList<Goods> goodsList = new ArrayList<Goods>();; // 총 상품리스트
+	public static ArrayList<Goods> goodsList = new ArrayList<Goods>();; // 총 상품리스트
 	Menu menu = new Menu();
 	ViewGoods vg = new ViewGoods();
 
@@ -18,7 +18,7 @@ public class Market {
 		int cnt = 1;
 		goodsList.add(new Goods("V20 판매합니다", "가개통", "LG", 1, 500000, "skd123", "2017/03/23"));
 		goodsList.add(new Goods("갤럭시 S7사실분?", "6개월 사용", "삼성", 2, 450000, "ksw123", "2017/03/20"));
-		goodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "G5", 3, 300000, "skd123", "2017/03/19"));
+		goodsList.add(new Goods("G5 초저가 땡처리!", "1년 사용", "LG", 3, 300000, "skd123", "2017/03/19"));
 		goodsList.add(new Goods("iphone 7는 진리.", "3개월 사용", "Apple", 4, 600000, "skd123", "2017/03/23"));
 
 	}
@@ -32,6 +32,70 @@ public class Market {
 	public void buyMenuOpen(User user) {
 		sellGoodsListPrint(user);
 		menu.buyMenu(this, user);
+
+	}
+	
+	public void searchGoods(User user){
+		Scanner scan = new Scanner(System.in); // 지역변수로 써서 메소드 호출이후 메모리에서
+		// 삭제시키기위함.
+
+		System.out.println("검색하실 제조사를 선택해주세요.");
+		System.out.println("1. 삼성 / 2. Apple / 3. LG / 4. 팬택 / 5. Sony / 6. 이외 기타 제조사");
+		int num = 0;
+		
+		
+		try {
+			num = scan.nextInt();
+			
+			System.out.println("--물품 목록--------------------------------------------------------------------");
+			System.out.println(" No\t게시글명\t  가격\t    판매자\t\t   날짜\t\t 상태");
+			System.out.println("===============================================================================");
+			
+			if(num == 1){
+				for (int i = 0; i < goodsList.size(); i++) {
+					if ("삼성".equals(goodsList.get(i).getCompany())) {  // 제조사가 같으면.
+						System.out.println(goodsList.get(i));
+					}
+				}
+			}else if(num == 2){
+				for (int i = 0; i < goodsList.size(); i++) {
+					if ("Apple".equals(goodsList.get(i).getCompany())) {  // 제조사가 같으면.
+						System.out.println(goodsList.get(i));
+					}
+				}
+			}else if(num == 3){
+				for (int i = 0; i < goodsList.size(); i++) {
+					if ("LG".equals(goodsList.get(i).getCompany())) {  // 제조사가 같으면.
+						System.out.println(goodsList.get(i));
+					}
+				}
+			}else if(num == 4){
+				for (int i = 0; i < goodsList.size(); i++) {
+					if ("팬택".equals(goodsList.get(i).getCompany())) {  // 제조사가 같으면.
+						System.out.println(goodsList.get(i));
+					}
+				}
+			}else if(num == 5){
+				for (int i = 0; i < goodsList.size(); i++) {
+					if ("Sony".equals(goodsList.get(i).getCompany())) {  // 제조사가 같으면.
+						System.out.println(goodsList.get(i));
+					}
+				}
+			}else if(num == 6){
+				for (int i = 0; i < goodsList.size(); i++) {
+					if ("기타".equals(goodsList.get(i).getCompany())) {  // 제조사가 같으면.
+						System.out.println(goodsList.get(i));
+					}
+				}
+			}else{
+				System.out.println("표시된 범위 내에서 선택해주세요.");
+			}
+		} catch (InputMismatchException e) {
+			// TODO: handle exception
+			System.out.println("번호로 선택해주세요.");					
+		}
+		System.out.println("-------------------------------------------------------------------------------");
+		
 
 	}
 

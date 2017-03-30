@@ -78,7 +78,6 @@ public class User {
 	// Market클래스에서 가져왔음.
 	public void printSellList() {
 		System.out.println("--판매 내역--------------------------------------------------------------------");
-
 		System.out.println(" No\t게시글명\t  가격\t    판매자\t\t   날짜\t\t 상태");
 		System.out.println("===============================================================================");
 		for (int i = getSellGoodsList().size() - 1; i >= 0; i--) { // 역순으로 게시글을
