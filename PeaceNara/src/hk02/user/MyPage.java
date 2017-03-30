@@ -3,6 +3,7 @@ package hk02.user;
 import java.util.Scanner;
 
 import hk02.logSystem.Membership;
+import hk02.market.Market;
 
 // 사용법
 // MyPage myPage = new MyPage();
@@ -19,9 +20,7 @@ public class MyPage {
 	// 1. 내 정보 확인
 	// 2. 비밀번호 변경
 	// 3. 마이페이지 종료
-
 	public boolean myPage(User user) {
-
 		int num = 0;
 		while(true) {
 			System.out.println("--My Page----------------------------------------------------------------------------------------------------------------");
@@ -130,6 +129,7 @@ public class MyPage {
 			if (idx >= Membership.userList.size()) {
 				System.out.println("일치하는 회원이 없습니다.");
 			} else if (idx >= 0) {
+				removeGoodsInList(user);
 				Membership.userList.remove(idx);
 				System.out.println(user.getId() + "님 탈퇴되었습니다.");
 				break;
@@ -137,4 +137,12 @@ public class MyPage {
 		}
 	}
 	
+	public void removeGoodsInList(User user) {
+		for (int i = 0; i < user.getSellGoodsList().size(); i++) {
+			if(user.getSellGoodsList().get(i).getSeller().equals(user.getId())
+					&& user.getSellGoodsList().get(i).getStock().equals("판매중")){
+				Market.goodsList.remove(user.getSellGoodsList().get(i));
+			}
+		}
+	}
 }
