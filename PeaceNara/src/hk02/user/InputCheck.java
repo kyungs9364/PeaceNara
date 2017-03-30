@@ -4,6 +4,24 @@ import java.util.Scanner;
 
 public class InputCheck {
 	
+	public static String inputYN() {
+		String str = "";
+		Scanner scan = new Scanner(System.in);
+		while(true){
+			str = scan.nextLine().trim();
+			if(!(str.matches("[yYnN]"))){
+				System.out.println("Y 또는 N을 입력해주세요.");
+				continue;
+			}
+			break;
+		}
+		return str;
+	}
+	
+	public static boolean isYN(String str) {
+		return str.matches("[yYnN]");
+	}
+	
 	// Scanner로 String으로 입력받아서 int반환 (유효성검사: 1, 2, 3)
 	public static int input123(){
 		Scanner scan = new Scanner(System.in);
