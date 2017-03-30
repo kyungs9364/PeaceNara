@@ -10,7 +10,7 @@ import hk02.logSystem.Membership;
 import hk02.user.User;
 
 public class Market {
-	private static ArrayList<Goods> goodsList = new ArrayList<Goods>();; // 총 상품리스트
+	public static ArrayList<Goods> goodsList = new ArrayList<Goods>();; // 총 상품리스트
 	Menu menu = new Menu();
 	ViewGoods vg = new ViewGoods();
 
