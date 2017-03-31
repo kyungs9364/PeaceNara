@@ -48,8 +48,9 @@ public class Membership {
 	public void input() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("--회원가입------------------------------------------------------------------------------------");
-		
+		boolean idcheck = false;
 		String id = null; 
+		
 		while (true) {
 			System.out.print("아이디 : ");
 			id = sc.nextLine().replaceAll("\\s", "");
@@ -61,6 +62,22 @@ public class Membership {
 				System.out.println("다섯글자 이상으로 입력하세요.");
 				continue;
 			}
+			
+
+			for (int i = 0; i < userList.size(); i++) {
+				if(id.equals(userList.get(i).getId())){
+					System.out.println("이미 존재하는 아이디 입니다.");
+					idcheck = false;
+					break;
+				} else {
+					idcheck = true;
+				}
+			}
+			
+			if(!(idcheck)) {
+				continue;
+			}
+
 			user.setId(id);
 			break;
 		}
