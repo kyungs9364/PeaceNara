@@ -132,21 +132,24 @@ public class Goods {
 	public String getTime2() {
 		return time2;
 	}
-	
+
 	@Override
 	public String toString() {
 		System.out.printf("%3d  %.20s", number, title);
-		if(title.getBytes().length < 30){
-			for (int i = 0; i <= (30 - title.getBytes().length); i++){
+		if (title.getBytes().length < 30) {
+			for (int i = 0; i <= (30 - title.getBytes().length); i++) {
 				System.out.print(" ");
 			}
 		}
-		System.out.printf("\t %d\t     %s\t", price, seller);
-		if(seller.getBytes().length < 10){
-			System.out.print("\t");
+		System.out.printf("\t %d\t     %s", price, seller);
+		if (seller.getBytes().length < 15) {
+			for (int i = 0; i <= (15 - seller.getBytes().length); i++) {
+				System.out.print(" ");
+			}
 		}
-		System.out.printf(" %s\t", time);
-		System.out.printf("%4s",getStock());
+		
+		System.out.printf("\t %s\t", time);
+		System.out.printf("%4s", getStock());
 		return "";
 	}
 

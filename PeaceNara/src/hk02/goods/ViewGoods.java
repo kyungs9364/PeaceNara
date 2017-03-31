@@ -6,7 +6,12 @@ public class ViewGoods {
 		System.out.println(" 물품번호 : " + goods.getNumber());
 		System.out.println(" 제    목 : " + goods.getTitle());
 		System.out.print(" 게 시 자 : " + goods.getSeller());
-		System.out.println("\t\t\t\t\t 게 시 일 : " + goods.getTime() + " " + goods.getTime2());
+		if (goods.getSeller().getBytes().length < 15) {
+			for (int i = 0; i <= (15 - goods.getSeller().getBytes().length); i++) {
+				System.out.print(" ");
+			}
+		}
+		System.out.println("\t\t\t\t 게 시 일 : " + goods.getTime() + " " + goods.getTime2());
 		System.out.print(" 연 락 처 : " + goods.getCellPhone());
 		System.out.println("\t\t\t\t 상    태 : " + goods.getStock());
 		System.out.println("----------------------------------------------------------------------------------------------");
